@@ -35,10 +35,11 @@
 <h1 id="事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序"><a href="#事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序" class="headerlink" title="事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序"></a>事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序</h1><p>onclick 鼠标点击左键触发<br>onmouseover 鼠标经过触发<br>onmouseout 鼠标离开触发<br>onfocus 获得鼠标焦点触发<br>onblur 失去鼠标焦点触发<br>onmousemove 鼠标移动触发<br>onmouseup 鼠标弹起触发<br>onmousedown 鼠标按下触发</p>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>前端学习</category>
       </categories>
       <tags>
         <tag>DOM</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -52,6 +53,9 @@
 
 
 ]]></content>
+      <categories>
+        <category>作品集</category>
+      </categories>
       <tags>
         <tag>Video</tag>
       </tags>
