@@ -22,21 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。通过这些DOM接口，可以改变网页的内容，结构和样式。1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。  文档：一个页面就是一个文档，DOM中使用Do">
+  <meta name="description" content="同步和异步同步任务同步任务都在主线程上执行，形成一个执行栈 异步任务JS的异步是通过回调函数实现的。一般而言，异步任务有以下三种类型：1、普通事件，如click，resize等2、资源加载，如load，error等3、定时器：包括setInterval，setTimeout等异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列） 123456&#x2F;&#x2F;&#x2F;&#x2F; 123console.log(1)se">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DOM重点核心">
-<meta property="og:url" content="http://example.com/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/index.html">
+<meta property="og:title" content="JS执行机制-同步与异步">
+<meta property="og:url" content="http://example.com/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/index.html">
 <meta property="og:site_name" content="Liny&#39;s Blog">
-<meta property="og:description" content="DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。通过这些DOM接口，可以改变网页的内容，结构和样式。1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。  文档：一个页面就是一个文档，DOM中使用Do">
+<meta property="og:description" content="同步和异步同步任务同步任务都在主线程上执行，形成一个执行栈 异步任务JS的异步是通过回调函数实现的。一般而言，异步任务有以下三种类型：1、普通事件，如click，resize等2、资源加载，如load，error等3、定时器：包括setInterval，setTimeout等异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列） 123456&#x2F;&#x2F;&#x2F;&#x2F; 123console.log(1)se">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-13T04:31:39.000Z">
-<meta property="article:modified_time" content="2022-01-15T10:27:18.437Z">
+<meta property="og:image" content="http://example.com/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/1.jpg">
+<meta property="article:published_time" content="2022-01-15T11:18:40.000Z">
+<meta property="article:modified_time" content="2022-01-15T11:27:16.735Z">
 <meta property="article:author" content="Youguang">
-<meta property="article:tag" content="DOM">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/1.jpg">
 
-<link rel="canonical" href="http://example.com/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/">
+<link rel="canonical" href="http://example.com/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/">
 
 
 <script id="page-configurations">
@@ -49,7 +50,7 @@
   };
 </script>
 
-  <title>DOM重点核心 | Liny's Blog</title>
+  <title>JS执行机制-同步与异步 | Liny's Blog</title>
   
 
 
@@ -194,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/IMG_5410.GIF">
@@ -207,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          DOM重点核心
+          JS执行机制-同步与异步
         </h1>
 
         <div class="post-meta">
@@ -216,16 +217,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-01-13 12:31:39" itemprop="dateCreated datePublished" datetime="2022-01-13T12:31:39+08:00">2022-01-13</time>
+              <time title="创建时间：2022-01-15 19:18:40 / 修改时间：19:27:16" itemprop="dateCreated datePublished" datetime="2022-01-15T19:18:40+08:00">2022-01-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-15 18:27:18" itemprop="dateModified" datetime="2022-01-15T18:27:18+08:00">2022-01-15</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -242,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>424</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -261,23 +256,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。<br>通过这些DOM接口，可以改变网页的内容，结构和样式。<br>1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。<br>2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。</p>
-<ul>
-<li><p>文档：一个页面就是一个文档，DOM中使用Document表示</p>
-</li>
-<li><p>元素：页面中的所有标签都是元素，DOM中使用element表示</p>
-</li>
-<li><p>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示<br>我们获取过来的<strong>DOM元素是一个对象（Object）</strong>，所以称为文档对象模型。<br>关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。</p>
-</li>
-</ul>
-<span id="more"></span>
+        <h1 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h1><h2 id="同步任务"><a href="#同步任务" class="headerlink" title="同步任务"></a>同步任务</h2><p>同步任务都在主线程上执行，形成一个执行栈</p>
+<h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>JS的异步是通过回调函数实现的。<br>一般而言，异步任务有以下三种类型：<br>1、普通事件，如click，resize等<br>2、资源加载，如load，error等<br>3、定时器：包括setInterval，setTimeout等<br>异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//// 123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p>1、document.write（直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘，同document.write）<br>2、innerHTML （将内容写入某个DOM节点，不会导致页面全部重绘，创建多个元素效率更高（不要拼接字符串，采取数组形式[document.body.innerHTML = array.join(‘’);]拼接），结构稍微复杂）<br>3、createElement （创建多个元素效率稍低一点点，但是结构更清晰）</p>
-<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>1、appendChild （末尾追加）<br>2、insertBefore （前面追加）</p>
-<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>1、removeChild</p>
-<h1 id="改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等"><a href="#改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等" class="headerlink" title="改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等"></a>改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等</h1><p>1、修改元素属性：src，href，title等<br>2、修改普通元素内容：innerHTML（识别html标签，W3C标准，保留空格和换行。推荐），innerText（不识别html标签，非标准，去除空格和换行）<br>3、修改表单元素：value，type，disabled等<br>4、修改元素样式：style（修改比较少的时候使用，行内样式操作，所以优先级高，样式采取驼峰命名法 比如 fontSize,backgroundColor），className（修改比较多的时候使用，类名样式操作，会直接更改元素类名，会覆盖原先的类名，如果想保留原先的类名，我们可以这么做，多类名选择器）<br>查 —— 主要获取查询dom的元素<br>1、DOM提供的API方法：getElementById，getElementsByTagName(大小写敏感,若在当前Document下没有找到，则返回null,古老用法不推荐)<br>2、H5提供的新方法：querySelector(只获取第一个元素，类.,id是#)，querySelectorAll （提倡）<br>3、利用节点操作获取元素：父（parentNode）、子（children）、兄（previousElementSibling、nextElementSibling）提倡<br>4、获取特殊对象：document.body(返回body元素对象) document.documentElement(返回html元素对象)<br>5、parentNode.childNodes (标准 子节点 childNodes所有的子节点 包含 元素节点 文本节点等）<br>6、parentNode.children是一个只读属性，返回所有的子元素节点，它只返回子元素节点，其余节点不返回（这个是我们重点掌握的）虽然children是一个非标准，但是得到了各个游览器的支持，因此我们可以放心使用<br>7、parentNode.firstChild和parentNode.lastChild<br>firstChild返回第一个子节点，找不到则返回null。同样，也是包含所有的节点<br>firstChild第一个子节点，不管是文本节点还是元素节点<br>8、firstElementChild（返回第一个子元素节点，但是有兼容性问题 IE9以上才支持）lastElementChild返回第一个子元素节点<br>9实际开发中，firstChild和lastChild包含其他节点，操作不方便，而firstElementChild和lastElementChild又有兼容性问题，那么我们如何<br>获取第一个子元素节点或者最后一个子元素节点呢？解决方法：实际开发中，既没有兼容性问题，又返回第一个子元素ol.children[0]和ol.children[ol.children.length-1]</p>
-<h1 id="属性操作-——-主要针对自定义属性"><a href="#属性操作-——-主要针对自定义属性" class="headerlink" title="属性操作 —— 主要针对自定义属性"></a>属性操作 —— 主要针对自定义属性</h1><p>1、setAttribute：设置dom的属性值<br>2、getAttribute：得到dom的属性值<br>3、removeAttribute：移除属性<br>4、常规取非自定义属性：element.属性 = 值<br>// h5新增的获取自定义属性的方法 它只能获取data-开头的<br>// dataset是一个集合里面存放了所有以data开头的自定义属性<br>console.log(div.dataset)<br>console.log(div.dataset.index)<br>console.log(div.dataset[‘index’])<br>如果是 data-list-name<br>div.getAttribute(‘data-list-name’)<br>console.log(div.dataset.listName)  驼峰命名法</p>
-<h1 id="事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序"><a href="#事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序" class="headerlink" title="事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序"></a>事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序</h1><p>onclick 鼠标点击左键触发<br>onmouseover 鼠标经过触发<br>onmouseout 鼠标离开触发<br>onfocus 获得鼠标焦点触发<br>onblur 失去鼠标焦点触发<br>onmousemove 鼠标移动触发<br>onmouseup 鼠标弹起触发<br>onmousedown 鼠标按下触发</p>
+
+
+<h2 id="JS执行机制"><a href="#JS执行机制" class="headerlink" title="JS执行机制"></a>JS执行机制</h2><p>1、先执行执行栈中的同步任务<br>2、异步任务（回调函数）放入任务队列中。<br>3、一旦执行栈中所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行。</p>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环（event loop)</p>
+<img src="/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/1.jpg" class="" title="This is an image">
+
+
+
+
+
 
     </div>
 
@@ -287,7 +279,6 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DOM/" rel="tag"># DOM</a>
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           </div>
 
@@ -296,11 +287,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/" rel="next" title="知识图谱可视化系统">
-      知识图谱可视化系统 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/01/15/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E5%B0%8F%E7%BB%93/" rel="prev" title="进程与线程的区别小结">
+      <i class="fa fa-chevron-left"></i> 进程与线程的区别小结
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -358,7 +349,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A2%9E"><span class="nav-number">2.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0"><span class="nav-number">3.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9-%E2%80%94%E2%80%94-%E4%B8%BB%E8%A6%81%E4%BF%AE%E6%94%B9dom%E7%9A%84%E5%85%83%E7%B4%A0%E5%B1%9E%E6%80%A7%EF%BC%8Cdom%E5%85%83%E7%B4%A0%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E5%B1%9E%E6%80%A7%EF%BC%8C%E8%A1%A8%E5%8D%95%E7%9A%84%E5%80%BC%E7%AD%89"><span class="nav-number">4.</span> <span class="nav-text">改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C-%E2%80%94%E2%80%94-%E4%B8%BB%E8%A6%81%E9%92%88%E5%AF%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">属性操作 —— 主要针对自定义属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%93%8D%E4%BD%9C-%E2%80%94%E2%80%94-%E7%BB%99%E5%85%83%E7%B4%A0%E6%B3%A8%E5%86%8C%E4%BA%8B%E4%BB%B6%EF%BC%8C%E9%87%87%E5%8F%96%E4%BA%8B%E4%BB%B6%E6%BA%90-%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">事件操作 —— 给元素注册事件，采取事件源.事件类型 &#x3D; 事件处理程序</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">同步和异步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">同步任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">异步任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.3.</span> <span class="nav-text">JS执行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.4.</span> <span class="nav-text">事件循环</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
