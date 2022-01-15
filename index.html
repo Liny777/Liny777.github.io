@@ -189,6 +189,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/15/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E5%B0%8F%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/IMG_5410.GIF">
+      <meta itemprop="name" content="Youguang">
+      <meta itemprop="description" content="Must be happy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Liny's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/15/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E5%B0%8F%E7%BB%93/" class="post-title-link" itemprop="url">进程与线程的区别小结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-15 18:22:03 / 修改时间：18:23:46" itemprop="dateCreated datePublished" datetime="2022-01-15T18:22:03+08:00">2022-01-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E7%BB%8F%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">面经小知识</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>698</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>进程VS线程</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/15/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%E5%B0%8F%E7%BB%93/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/15/this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -203,7 +292,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/15/this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">this指向问题</a>
+            <a href="/2022/01/15/this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">This指向问题</a>
         </h2>
 
         <div class="post-meta">
@@ -214,7 +303,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-01-15 17:01:16 / 修改时间：17:04:03" itemprop="dateCreated datePublished" datetime="2022-01-15T17:01:16+08:00">2022-01-15</time>
+              <time title="创建时间：2022-01-15 17:01:16 / 修改时间：18:21:15" itemprop="dateCreated datePublished" datetime="2022-01-15T17:01:16+08:00">2022-01-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,16 +340,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>this指向问题 一般情况下this的最终指向的是那个调用它的对象</p>
-<ol>
-<li><p>全局作用域或者普通函数中的this指向全局对象window(注意定时器里面的this指向window)</p>
-</li>
-<li><p>方法调用中谁调用this指向谁</p>
-</li>
-<li><p>构造函数中的this指向构造函数的实例</p>
-</li>
-</ol>
-
+          <p>This的指向问题</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/15/this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -293,7 +381,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/" class="post-title-link" itemprop="url">大三-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</a>
+            <a href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/" class="post-title-link" itemprop="url">大四-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</a>
         </h2>
 
         <div class="post-meta">
@@ -302,10 +390,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-13 14:23:30 / 修改时间：15:20:45" itemprop="dateCreated datePublished" datetime="2022-01-13T14:23:30+08:00">2022-01-13</time>
+              <time title="创建时间：2022-01-13 14:23:30" itemprop="dateCreated datePublished" datetime="2022-01-13T14:23:30+08:00">2022-01-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-15 18:19:54" itemprop="dateModified" datetime="2022-01-15T18:19:54+08:00">2022-01-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -341,13 +435,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>作品描述：</p>
-<p>科技冬奥重点专项的大数据平台</p>
-<p>实时展示车辆的数据信息</p>
-<p>Vue+Echarts+socket.io</p>
-<p>作品展示：</p>
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/5.png" class="" title="This is an image">
-
+          <p>科技冬奥重点专项的大数据平台 —— 实时展示车辆的数据信息</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -389,10 +485,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-13 12:37:46 / 修改时间：15:21:26" itemprop="dateCreated datePublished" datetime="2022-01-13T12:37:46+08:00">2022-01-13</time>
+              <time title="创建时间：2022-01-13 12:37:46" itemprop="dateCreated datePublished" datetime="2022-01-13T12:37:46+08:00">2022-01-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-15 18:20:21" itemprop="dateModified" datetime="2022-01-15T18:20:21+08:00">2022-01-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -428,27 +530,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>作品描述：</p>
-<p>知识图谱可视化系统</p>
-<p>Vue+Echarts+Element-UI+Springboot + HugeGraph + MongoDB :</p>
-<p>作品展示：</p>
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/4.png" class="" title="This is an image">
-
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/7.png" class="" title="This is an image">
-
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/8.png" class="" title="This is an image">
-
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/10.png" class="" title="This is an image">
-
-<p>视频展示-1：</p>
-<iframe height=500 width="100%" src='https://player.youku.com/embed/XNTE2OTU2ODQ4MA==' frameborder=0 'allowfullscreen'></iframe>
-
-<p>视频展示-2:</p>
-<iframe height=498 width=510 src='https://player.youku.com/embed/XNTE2OTU3NzgwOA==' frameborder=0 'allowfullscreen'></iframe>
-
-<p>代码地址：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Liny777/Visualization-vue-sample">https://github.com/Liny777/Visualization-vue-sample</a></p>
-
+          <p>医学知识图谱搜索系统&可视化知识图谱</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -490,10 +580,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-13 12:31:39 / 修改时间：14:07:37" itemprop="dateCreated datePublished" datetime="2022-01-13T12:31:39+08:00">2022-01-13</time>
+              <time title="创建时间：2022-01-13 12:31:39" itemprop="dateCreated datePublished" datetime="2022-01-13T12:31:39+08:00">2022-01-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-15 18:20:54" itemprop="dateModified" datetime="2022-01-15T18:20:54+08:00">2022-01-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -529,19 +625,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。<br>通过这些DOM接口，可以改变网页的内容，结构和样式。<br>1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。<br>2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。</p>
-<ul>
-<li>文档：一个页面就是一个文档，DOM中使用Document表示</li>
-<li>元素：页面中的所有标签都是元素，DOM中使用element表示</li>
-<li>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示<br>我们获取过来的<strong>DOM元素是一个对象（Object）</strong>，所以称为文档对象模型。<br>关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。</li>
-</ul>
-<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p>1、document.write（直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘，同document.write）<br>2、innerHTML （将内容写入某个DOM节点，不会导致页面全部重绘，创建多个元素效率更高（不要拼接字符串，采取数组形式[document.body.innerHTML = array.join(‘’);]拼接），结构稍微复杂）<br>3、createElement （创建多个元素效率稍低一点点，但是结构更清晰）</p>
-<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>1、appendChild （末尾追加）<br>2、insertBefore （前面追加）</p>
-<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>1、removeChild</p>
-<h1 id="改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等"><a href="#改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等" class="headerlink" title="改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等"></a>改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等</h1><p>1、修改元素属性：src，href，title等<br>2、修改普通元素内容：innerHTML（识别html标签，W3C标准，保留空格和换行。推荐），innerText（不识别html标签，非标准，去除空格和换行）<br>3、修改表单元素：value，type，disabled等<br>4、修改元素样式：style（修改比较少的时候使用，行内样式操作，所以优先级高，样式采取驼峰命名法 比如 fontSize,backgroundColor），className（修改比较多的时候使用，类名样式操作，会直接更改元素类名，会覆盖原先的类名，如果想保留原先的类名，我们可以这么做，多类名选择器）<br>查 —— 主要获取查询dom的元素<br>1、DOM提供的API方法：getElementById，getElementsByTagName(大小写敏感,若在当前Document下没有找到，则返回null,古老用法不推荐)<br>2、H5提供的新方法：querySelector(只获取第一个元素，类.,id是#)，querySelectorAll （提倡）<br>3、利用节点操作获取元素：父（parentNode）、子（children）、兄（previousElementSibling、nextElementSibling）提倡<br>4、获取特殊对象：document.body(返回body元素对象) document.documentElement(返回html元素对象)<br>5、parentNode.childNodes (标准 子节点 childNodes所有的子节点 包含 元素节点 文本节点等）<br>6、parentNode.children是一个只读属性，返回所有的子元素节点，它只返回子元素节点，其余节点不返回（这个是我们重点掌握的）虽然children是一个非标准，但是得到了各个游览器的支持，因此我们可以放心使用<br>7、parentNode.firstChild和parentNode.lastChild<br>firstChild返回第一个子节点，找不到则返回null。同样，也是包含所有的节点<br>firstChild第一个子节点，不管是文本节点还是元素节点<br>8、firstElementChild（返回第一个子元素节点，但是有兼容性问题 IE9以上才支持）lastElementChild返回第一个子元素节点<br>9实际开发中，firstChild和lastChild包含其他节点，操作不方便，而firstElementChild和lastElementChild又有兼容性问题，那么我们如何<br>获取第一个子元素节点或者最后一个子元素节点呢？解决方法：实际开发中，既没有兼容性问题，又返回第一个子元素ol.children[0]和ol.children[ol.children.length-1]</p>
-<h1 id="属性操作-——-主要针对自定义属性"><a href="#属性操作-——-主要针对自定义属性" class="headerlink" title="属性操作 —— 主要针对自定义属性"></a>属性操作 —— 主要针对自定义属性</h1><p>1、setAttribute：设置dom的属性值<br>2、getAttribute：得到dom的属性值<br>3、removeAttribute：移除属性<br>4、常规取非自定义属性：element.属性 = 值<br>// h5新增的获取自定义属性的方法 它只能获取data-开头的<br>// dataset是一个集合里面存放了所有以data开头的自定义属性<br>console.log(div.dataset)<br>console.log(div.dataset.index)<br>console.log(div.dataset[‘index’])<br>如果是 data-list-name<br>div.getAttribute(‘data-list-name’)<br>console.log(div.dataset.listName)  驼峰命名法</p>
-<h1 id="事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序"><a href="#事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序" class="headerlink" title="事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序"></a>事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序</h1><p>onclick 鼠标点击左键触发<br>onmouseover 鼠标经过触发<br>onmouseout 鼠标离开触发<br>onfocus 获得鼠标焦点触发<br>onblur 失去鼠标焦点触发<br>onmousemove 鼠标移动触发<br>onmouseup 鼠标弹起触发<br>onmousedown 鼠标按下触发</p>
-
+          <p>关于文档对象模型需要掌握的操作方法</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -623,20 +715,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -685,7 +777,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
 </div>
 
 <!--
