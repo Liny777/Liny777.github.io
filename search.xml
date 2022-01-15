@@ -5,10 +5,15 @@
     <url>/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/</url>
     <content><![CDATA[<p>DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。<br>通过这些DOM接口，可以改变网页的内容，结构和样式。<br>1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。<br>2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。</p>
 <ul>
-<li>文档：一个页面就是一个文档，DOM中使用Document表示</li>
-<li>元素：页面中的所有标签都是元素，DOM中使用element表示</li>
-<li>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示<br>我们获取过来的<strong>DOM元素是一个对象（Object）</strong>，所以称为文档对象模型。<br>关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。</li>
+<li><p>文档：一个页面就是一个文档，DOM中使用Document表示</p>
+</li>
+<li><p>元素：页面中的所有标签都是元素，DOM中使用element表示</p>
+</li>
+<li><p>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示<br>我们获取过来的<strong>DOM元素是一个对象（Object）</strong>，所以称为文档对象模型。<br>关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。</p>
+</li>
 </ul>
+<span id="more"></span>
+
 <h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p>1、document.write（直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘，同document.write）<br>2、innerHTML （将内容写入某个DOM节点，不会导致页面全部重绘，创建多个元素效率更高（不要拼接字符串，采取数组形式[document.body.innerHTML = array.join(‘’);]拼接），结构稍微复杂）<br>3、createElement （创建多个元素效率稍低一点点，但是结构更清晰）</p>
 <h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>1、appendChild （末尾追加）<br>2、insertBefore （前面追加）</p>
 <h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>1、removeChild</p>
@@ -27,12 +32,15 @@
   <entry>
     <title>大四-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</title>
     <url>/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/</url>
-    <content><![CDATA[<p>作品描述：</p>
+    <content><![CDATA[<p>作品展示：</p>
+<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/5.png" class="" title="This is an image">
+
+<span id="more"></span>
+
+<p>作品描述：</p>
 <p>科技冬奥重点专项的大数据平台</p>
 <p>实时展示车辆的数据信息</p>
 <p>Vue+Echarts+socket.io</p>
-<p>作品展示：</p>
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/5.png" class="" title="This is an image">
 ]]></content>
       <categories>
         <category>作品集</category>
@@ -51,6 +59,8 @@
 <p>Vue+Echarts+Element-UI+Springboot + HugeGraph + MongoDB :</p>
 <p>作品展示：</p>
 <img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/4.png" class="" title="This is an image">
+
+<span id="more"></span>
 
 <img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/7.png" class="" title="This is an image">
 
@@ -90,6 +100,7 @@
 <li><p>构造函数中的this指向构造函数的实例</p>
 </li>
 </ol>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>前端学习</category>
@@ -110,6 +121,8 @@
 <p>1、内存</p>
 <p>2、通信</p>
 <p>3、同步</p>
+<span id="more"></span>
+
 <p>1、线程简单的原因 —— 通信</p>
 <p>线程之间通信：在同一进程下，共享全局变量，静态变量等数据，指针指向同一个内存，交互很方便。</p>
 <p>2、进程困难的原因 —— 通信</p>
