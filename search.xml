@@ -153,7 +153,11 @@
   <entry>
     <title>JS执行机制-同步与异步</title>
     <url>/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/</url>
-    <content><![CDATA[<h1 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h1><h2 id="同步任务"><a href="#同步任务" class="headerlink" title="同步任务"></a>同步任务</h2><p>同步任务都在主线程上执行，形成一个执行栈</p>
+    <content><![CDATA[<img src="/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/1.jpg" class="" title="This is an image">
+
+<span id="more"></span>
+
+<h1 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h1><h2 id="同步任务"><a href="#同步任务" class="headerlink" title="同步任务"></a>同步任务</h2><p>同步任务都在主线程上执行，形成一个执行栈</p>
 <h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>JS的异步是通过回调函数实现的。<br>一般而言，异步任务有以下三种类型：<br>1、普通事件，如click，resize等<br>2、资源加载，如load，error等<br>3、定时器：包括setInterval，setTimeout等<br>异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列）</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//// 123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
@@ -161,12 +165,6 @@
 
 <h2 id="JS执行机制"><a href="#JS执行机制" class="headerlink" title="JS执行机制"></a>JS执行机制</h2><p>1、先执行执行栈中的同步任务<br>2、异步任务（回调函数）放入任务队列中。<br>3、一旦执行栈中所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行。</p>
 <h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环（event loop)</p>
-<img src="/2022/01/15/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/1.jpg" class="" title="This is an image">
-
-
-
-
-
 ]]></content>
       <categories>
         <category>前端学习</category>
