@@ -22,17 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Must be happy">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Liny&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/Echarts/index.html">
+  <meta name="description" content="209. 长度最小的子数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分（手写不调用库）+前缀+JS">
+<meta property="og:url" content="http://example.com/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/index.html">
 <meta property="og:site_name" content="Liny&#39;s Blog">
-<meta property="og:description" content="Must be happy">
+<meta property="og:description" content="209. 长度最小的子数组">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-27T09:29:17.000Z">
+<meta property="article:modified_time" content="2022-01-27T09:30:44.188Z">
 <meta property="article:author" content="Youguang">
+<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/Echarts/">
+<link rel="canonical" href="http://example.com/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/">
 
 
 <script id="page-configurations">
@@ -40,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Echarts | Liny's Blog</title>
+  <title>二分（手写不调用库）+前缀+JS | Liny's Blog</title>
   
 
 
@@ -183,71 +186,109 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Echarts
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/IMG_5410.GIF">
+      <meta itemprop="name" content="Youguang">
+      <meta itemprop="description" content="Must be happy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Liny's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二分（手写不调用库）+前缀+JS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-27 17:29:17 / 修改时间：17:30:44" itemprop="dateCreated datePublished" datetime="2022-01-27T17:29:17+08:00">2022-01-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
+        <h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-13T14:23:30+08:00"
-              content="2022-01-13">
-          01-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/" itemprop="url">
-            <span itemprop="name">大四-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-13T12:37:46+08:00"
-              content="2022-01-13">
-          01-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/" itemprop="url">
-            <span itemprop="name">知识图谱可视化系统</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<p>思路：<br>我们只需要找到 sums[k]-sums[j]&gt;=s，那么 k-j 就是满足的连续子数组 因此转换成求 sums[k]-sums[j]&gt;=s 我们可以求 sums[j]+s&lt;=sums[k]，我们只需要求出 sum[j]+s 的值，然后使用二分法查找即可找到这个 k。<br>二分优化（优化在找右端点）：<br>由于本题保证nums[i]为正，所以前缀和数组是递增的，也就是说在确定了区间左端之后，可以二分找右端点：<br>时间复杂度：<br>O(logn)<br>空间复杂度<br>O(n)<br>/**</p>
+<p>@param {number} target<br>@param {number[]} nums<br>@return {number}<br>*/<br>var minSubArrayLen = function(s, nums) {<br>// 二分查找<br>var binarySearch = function(nums,target){<br>let left=-1,right = nums.length,middle = 0<br>while(left+1!=right){<br>middle = Math.floor((left+right)/2)<br>if(nums[middle]&gt;=target){<br>right = middle;<br>}else{<br>left = middle<br>}<br>}<br>return right==nums.length?-1:right<br>}<br>// ———————————-<br>let length=nums.length,min=+Infinity,sums=[]<br>sums[0] = 0<br>for(let i=1;i&lt;=length;i++){<br>sums[i] = sums[i-1] + nums[i-1]<br>}<br>console.log(“s: “+s);<br>console.log(“sums[0]: “+sums[0]);<br>for(let i=0;i&lt;=length;i++){<br>let target = s + sums[i]<br>console.log(i+” sums[i]: “+sums[i]);<br>console.log(“target: “+target);<br>let index = binarySearch(sums,target)<br>console.log(“index: “+index)<br>if(index&lt;0){<br>break. // 当没找到，意味着加起来的和小于target，意味着当前的index与他之后的元素相加都没有超过target，意味着他之后的元素也都无法超过target,因此直接跳出循环即可.<br>}<br>if( index&lt;=length){<br>min = Math.min(min,index-i)<br>console.log(“min: “+min)<br>}<br>console.log(“———-“);<br>}<br>return min == +Infinity?0:min<br>};</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/27/%E9%80%92%E5%BD%92%E6%B1%82%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" rel="prev" title="递归求斐波那契数列的性能分析">
+      <i class="fa fa-chevron-left"></i> 递归求斐波那契数列的性能分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" rel="next" title="螺旋矩阵">
+      螺旋矩阵 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -299,6 +340,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#209-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">209. 长度最小的子数组</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

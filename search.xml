@@ -488,4 +488,137 @@
         <tag>数组</tag>
       </tags>
   </entry>
+  <entry>
+    <title>二分（手写不调用库）+前缀+JS</title>
+    <url>/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/</url>
+    <content><![CDATA[<h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><span id="more"></span>
+
+<p>思路：<br>我们只需要找到 sums[k]-sums[j]&gt;=s，那么 k-j 就是满足的连续子数组 因此转换成求 sums[k]-sums[j]&gt;=s 我们可以求 sums[j]+s&lt;=sums[k]，我们只需要求出 sum[j]+s 的值，然后使用二分法查找即可找到这个 k。<br>二分优化（优化在找右端点）：<br>由于本题保证nums[i]为正，所以前缀和数组是递增的，也就是说在确定了区间左端之后，可以二分找右端点：<br>时间复杂度：<br>O(logn)<br>空间复杂度<br>O(n)<br>/**</p>
+<p>@param {number} target<br>@param {number[]} nums<br>@return {number}<br>*/<br>var minSubArrayLen = function(s, nums) {<br>// 二分查找<br>var binarySearch = function(nums,target){<br>let left=-1,right = nums.length,middle = 0<br>while(left+1!=right){<br>middle = Math.floor((left+right)/2)<br>if(nums[middle]&gt;=target){<br>right = middle;<br>}else{<br>left = middle<br>}<br>}<br>return right==nums.length?-1:right<br>}<br>// ———————————-<br>let length=nums.length,min=+Infinity,sums=[]<br>sums[0] = 0<br>for(let i=1;i&lt;=length;i++){<br>sums[i] = sums[i-1] + nums[i-1]<br>}<br>console.log(“s: “+s);<br>console.log(“sums[0]: “+sums[0]);<br>for(let i=0;i&lt;=length;i++){<br>let target = s + sums[i]<br>console.log(i+” sums[i]: “+sums[i]);<br>console.log(“target: “+target);<br>let index = binarySearch(sums,target)<br>console.log(“index: “+index)<br>if(index&lt;0){<br>break. // 当没找到，意味着加起来的和小于target，意味着当前的index与他之后的元素相加都没有超过target，意味着他之后的元素也都无法超过target,因此直接跳出循环即可.<br>}<br>if( index&lt;=length){<br>min = Math.min(min,index-i)<br>console.log(“min: “+min)<br>}<br>console.log(“———-“);<br>}<br>return min == +Infinity?0:min<br>};</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>双指针</title>
+    <url>/2022/01/27/%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h2 id="什么是双指针（对撞指针、快慢指针）"><a href="#什么是双指针（对撞指针、快慢指针）" class="headerlink" title="什么是双指针（对撞指针、快慢指针）"></a>什么是双指针（对撞指针、快慢指针）</h2><p><strong>双指针</strong>，指的是在遍历对象的过程中，不是普通的使用单个指针进行访问，而是使用两个相同方向（<em>快慢指针</em>）或者相反方向（<em>对撞指针</em>）的指针进行扫描，从而达到相应的目的。</p>
+<p>换言之，双指针法充分使用了数组有序这一特征，从而在某些情况下能够简化一些运算。</p>
+<span id="more"></span>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h3><p><strong>快慢指针</strong>也是双指针，但是两个指针从同一侧开始遍历数组，将这两个指针分别定义为<code>快指针（fast）</code>和<code>慢指针（slow）</code>，两个指针以不同的策略移动，直到两个指针的值相等（或其他特殊条件）为止，如fast每次增长两个，slow每次增长一个。</p>
+<p>以<a href="https://link.zhihu.com/?target=https://leetcode-cn.com/problems/linked-list-cycle/">LeetCode 141.环形链表</a>为例,，判断给定链表中是否存在环，可以定义快慢两个指针，快指针每次增长一个，而慢指针每次增长两个，最后两个指针指向节点的值相等，则说明有环。就好像一个环形跑道上有一快一慢两个运动员赛跑，如果时间足够长，跑地快的运动员一定会赶上慢的运动员。</p>
+<p>再比如<a href="https://link.zhihu.com/?target=https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26 删除排序数组中的重复项</a>，这里还是定义快慢两个指针。快指针每次增长一个，慢指针只有当快慢指针上的值不同时，才增长一个（由于是有序数组，快慢指针值不等说明找到了新值）。</p>
+<h3 id="对撞指针"><a href="#对撞指针" class="headerlink" title="对撞指针"></a>对撞指针</h3><p><strong>对撞指针</strong>是指在有序数组中，将指向最左侧的索引定义为<code>左指针(left)</code>，最右侧的定义为<code>右指针(right)</code>，然后从两头向中间进行数组遍历。</p>
+<blockquote>
+<p>对撞数组适用于<strong>有序数组</strong>，也就是说当你遇到题目给定有序数组时，应该第一时间想到用对撞指针解题。</p>
+</blockquote>
+<p>以**LeetCode 881<a href="https://link.zhihu.com/?target=https://leetcode-cn.com/problems/boats-to-save-people/">救生艇</a>**问题为例</p>
+<p>由于本题只要求计算出<code>最小船数</code>，所以原数组是否被改变，和元素索引位置都不考虑在内，所以可以先对于给定数组进行排序，再从数组两侧向中间遍历。所以解题思路如下：</p>
+<ol>
+<li>对给定数组进行升序排序</li>
+<li>初始化左右指针</li>
+<li>每次都用一个”最重的“和一个”最轻的“进行配对，如果二人重量小于<code>Limit</code>，则此时的”最轻的“上船，即（<code>left++</code>）。不管”最轻的“是否上船，”最重的“都要上船，即（<code>right--</code>）并且所需船数量加一，即（<code>num++</code>）</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当遇到有序数组时，应该优先想到<code>双指针</code>来解决问题，因两个指针的同时遍历会减少空间复杂度和时间复杂度。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间复杂度</title>
+    <url>/2022/01/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</url>
+    <content><![CDATA[<p>O(1)常数阶 &lt; $O(\log n)$对数阶 &lt; $O(n)$线性阶 &lt; $O(n^2)$平方阶 &lt; $O(n^3)$立方阶 &lt; $O(2^n)$指数阶</p>
+<span id="more"></span>
+
+<p><strong>面试中说道算法的时间复杂度是多少指的都是一般情况</strong>。</p>
+<p>？ 在决定使用哪些算法的时候，不是时间复杂越低的越好（因为简化后的时间复杂度忽略了常数项等等），要考虑数据规模，如果数据规模很小甚至可以用$O(n^2)$的算法比$O(n)$的更合适（在有常数项的时候）。 </p>
+<p><strong>所以我们说的时间复杂度都是省略常数项系数的，是因为一般情况下都是默认数据规模足够的大，基于这样的事实，给出的算法时间复杂的的一个排行如下所示</strong></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>盛最多水的容器</title>
+    <url>/2022/01/27/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<img src="/2022/01/27/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/1.png" class="" title="This is an image">
+
+<span id="more"></span>
+
+<p>给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<p>说明：你不能倾斜容器。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>小的一边往内挪动</p>
+<p>大的不动</p>
+<p>/**</p>
+<p> * @param {number[]} height</p>
+<p> * @return {number}</p>
+<p> */</p>
+<p>var maxArea = function(height) {</p>
+<p>​    let maxArea = 0,left=0,right=height.length-1,max=0;</p>
+<p>   while(left&lt;right){</p>
+<p>​       </p>
+<p>​       if(height[left]&lt;=height[right]){</p>
+<p>​           max = height[left]*(right-left)</p>
+<p>​           left++</p>
+<p>​       }else{</p>
+<p>​           max = height[right]*(right-left)</p>
+<p>​           right–</p>
+<p>​       }</p>
+<p>​       maxArea = Math.max(max,maxArea)</p>
+<p>   }</p>
+<p>​    return maxArea;</p>
+<p>};</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>螺旋矩阵</title>
+    <url>/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h4 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a><a href="https://leetcode-cn.com/problems/spiral-matrix/">54. 螺旋矩阵</a></h4><span id="more"></span>
+
+<p>由于56题K神写法只适用于正方形，因此当题目变为矩形时，需要给后面的两个方向（右到左，下到上)增加判断条件，因为如果是正方形，最后到达中心点的时候，最后一次循环，必然是l=r,t=b,然后后两个方向就不会执行了，因为下一步就是r&lt;l,t&lt;b,但如果是矩形，那么就有可能出现l+1=r或者t+1=b在最后一次循环里，那么这时候就会导致最后两个方向会执行其中一个，导致最后结果多出一个值，这时候只需要加一个判断条件，如果返回的矩阵已经达到要求的数量，那么就不执行后面两个方向，强制不让后面两个方向执行即可。<br>/**</p>
+<p>@param {number[][]} matrix<br>@return {number[]}<br>/<br>var spiralOrder = function(matrix) {<br>let n = matrix.length,m = matrix[0].length,l=t=0,r=m-1,b=n-1,mat= new Array(nm).fill(0),num=0,tar=nm<br>while(num&lt;tar){<br>for(let i=l;i&lt;=r;i++) mat[num++] = matrix[t][i]<br>t++<br>for(let i=t;i&lt;=b;i++) mat[num++] = matrix[i][r]<br>r–<br>if(mat[nm-1]===0)for(let i=r;i&gt;=l;i–) mat[num++] = matrix[b][i]<br>b–<br>if(mat[n*m-1]===0)for(let i=b;i&gt;=t;i–) mat[num++] = matrix[i][l]<br>l++<br>}<br>return mat<br>};</p>
+<h4 id="59-螺旋矩阵-II"><a href="#59-螺旋矩阵-II" class="headerlink" title="59. 螺旋矩阵 II"></a><a href="https://leetcode-cn.com/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a></h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> l=t=<span class="number">0</span>,r=b=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> matrix = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>).map(<span class="function">()=&gt;</span><span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">let</span> num=<span class="number">1</span>,tar=n*n</span><br><span class="line">    <span class="keyword">while</span>(num&lt;=tar)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;=r;i++) matrix[t][i] = num++</span><br><span class="line">        t++</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=t;i&lt;=b;i++) matrix[i][r] = num++</span><br><span class="line">        r--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=r;i&gt;=l;i--) matrix[b][i] = num++</span><br><span class="line">        b--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=b;i&gt;=t;i--) matrix[i][l] = num++</span><br><span class="line">        l++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> matrix</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>递归求斐波那契数列的性能分析</title>
+    <url>/2022/01/27/%E9%80%92%E5%BD%92%E6%B1%82%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p><a href="https://zhuanlan.zhihu.com/p/27205391">https://zhuanlan.zhihu.com/p/27205391</a></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fibonacci</span><span class="params">(<span class="keyword">int</span> first, <span class="keyword">int</span> second, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fibonacci</span>(second, first + second, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
 </search>

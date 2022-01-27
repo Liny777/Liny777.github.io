@@ -22,17 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Must be happy">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Liny&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/Echarts/index.html">
+  <meta name="description" content="54. 螺旋矩阵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="螺旋矩阵">
+<meta property="og:url" content="http://example.com/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="Liny&#39;s Blog">
-<meta property="og:description" content="Must be happy">
+<meta property="og:description" content="54. 螺旋矩阵">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-27T09:31:25.000Z">
+<meta property="article:modified_time" content="2022-01-27T09:33:39.847Z">
 <meta property="article:author" content="Youguang">
+<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/Echarts/">
+<link rel="canonical" href="http://example.com/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">
 
 
 <script id="page-configurations">
@@ -40,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Echarts | Liny's Blog</title>
+  <title>螺旋矩阵 | Liny's Blog</title>
   
 
 
@@ -183,71 +186,111 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Echarts
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/IMG_5410.GIF">
+      <meta itemprop="name" content="Youguang">
+      <meta itemprop="description" content="Must be happy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Liny's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          螺旋矩阵
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-27 17:31:25 / 修改时间：17:33:39" itemprop="dateCreated datePublished" datetime="2022-01-27T17:31:25+08:00">2022-01-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
+        <h4 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/spiral-matrix/">54. 螺旋矩阵</a></h4><span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>由于56题K神写法只适用于正方形，因此当题目变为矩形时，需要给后面的两个方向（右到左，下到上)增加判断条件，因为如果是正方形，最后到达中心点的时候，最后一次循环，必然是l=r,t=b,然后后两个方向就不会执行了，因为下一步就是r&lt;l,t&lt;b,但如果是矩形，那么就有可能出现l+1=r或者t+1=b在最后一次循环里，那么这时候就会导致最后两个方向会执行其中一个，导致最后结果多出一个值，这时候只需要加一个判断条件，如果返回的矩阵已经达到要求的数量，那么就不执行后面两个方向，强制不让后面两个方向执行即可。<br>/**</p>
+<p>@param {number[][]} matrix<br>@return {number[]}<br>/<br>var spiralOrder = function(matrix) {<br>let n = matrix.length,m = matrix[0].length,l=t=0,r=m-1,b=n-1,mat= new Array(nm).fill(0),num=0,tar=nm<br>while(num&lt;tar){<br>for(let i=l;i&lt;=r;i++) mat[num++] = matrix[t][i]<br>t++<br>for(let i=t;i&lt;=b;i++) mat[num++] = matrix[i][r]<br>r–<br>if(mat[nm-1]===0)for(let i=r;i&gt;=l;i–) mat[num++] = matrix[b][i]<br>b–<br>if(mat[n*m-1]===0)for(let i=b;i&gt;=t;i–) mat[num++] = matrix[i][l]<br>l++<br>}<br>return mat<br>};</p>
+<h4 id="59-螺旋矩阵-II"><a href="#59-螺旋矩阵-II" class="headerlink" title="59. 螺旋矩阵 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> l=t=<span class="number">0</span>,r=b=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> matrix = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>).map(<span class="function">()=&gt;</span><span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">let</span> num=<span class="number">1</span>,tar=n*n</span><br><span class="line">    <span class="keyword">while</span>(num&lt;=tar)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;=r;i++) matrix[t][i] = num++</span><br><span class="line">        t++</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=t;i&lt;=b;i++) matrix[i][r] = num++</span><br><span class="line">        r--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=r;i&gt;=l;i--) matrix[b][i] = num++</span><br><span class="line">        b--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=b;i&gt;=t;i--) matrix[i][l] = num++</span><br><span class="line">        l++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> matrix</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-13T14:23:30+08:00"
-              content="2022-01-13">
-          01-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/" itemprop="url">
-            <span itemprop="name">大四-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-13T12:37:46+08:00"
-              content="2022-01-13">
-          01-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/" itemprop="url">
-            <span itemprop="name">知识图谱可视化系统</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/" rel="prev" title="二分（手写不调用库）+前缀+JS">
+      <i class="fa fa-chevron-left"></i> 二分（手写不调用库）+前缀+JS
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/27/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" rel="next" title="盛最多水的容器">
+      盛最多水的容器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -299,6 +342,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">54. 螺旋矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#59-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-II"><span class="nav-number">2.</span> <span class="nav-text">59. 螺旋矩阵 II</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
