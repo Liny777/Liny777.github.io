@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>DOM重点核心</title>
-    <url>/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/</url>
-    <content><![CDATA[<p>DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。<br>通过这些DOM接口，可以改变网页的内容，结构和样式。<br>1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。<br>2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。</p>
-<ul>
-<li><p>文档：一个页面就是一个文档，DOM中使用Document表示</p>
-</li>
-<li><p>元素：页面中的所有标签都是元素，DOM中使用element表示</p>
-</li>
-<li><p>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示<br>我们获取过来的<strong>DOM元素是一个对象（Object）</strong>，所以称为文档对象模型。<br>关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。</p>
-</li>
-</ul>
-<span id="more"></span>
-
-<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p>1、document.write（直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘，同document.write）<br>2、innerHTML （将内容写入某个DOM节点，不会导致页面全部重绘，创建多个元素效率更高（不要拼接字符串，采取数组形式[document.body.innerHTML = array.join(‘’);]拼接），结构稍微复杂）<br>3、createElement （创建多个元素效率稍低一点点，但是结构更清晰）</p>
-<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>1、appendChild （末尾追加）<br>2、insertBefore （前面追加）</p>
-<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>1、removeChild</p>
-<h1 id="改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等"><a href="#改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等" class="headerlink" title="改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等"></a>改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等</h1><p>1、修改元素属性：src，href，title等<br>2、修改普通元素内容：innerHTML（识别html标签，W3C标准，保留空格和换行。推荐），innerText（不识别html标签，非标准，去除空格和换行）<br>3、修改表单元素：value，type，disabled等<br>4、修改元素样式：style（修改比较少的时候使用，行内样式操作，所以优先级高，样式采取驼峰命名法 比如 fontSize,backgroundColor），className（修改比较多的时候使用，类名样式操作，会直接更改元素类名，会覆盖原先的类名，如果想保留原先的类名，我们可以这么做，多类名选择器）<br>查 —— 主要获取查询dom的元素<br>1、DOM提供的API方法：getElementById，getElementsByTagName(大小写敏感,若在当前Document下没有找到，则返回null,古老用法不推荐)<br>2、H5提供的新方法：querySelector(只获取第一个元素，类.,id是#)，querySelectorAll （提倡）<br>3、利用节点操作获取元素：父（parentNode）、子（children）、兄（previousElementSibling、nextElementSibling）提倡<br>4、获取特殊对象：document.body(返回body元素对象) document.documentElement(返回html元素对象)<br>5、parentNode.childNodes (标准 子节点 childNodes所有的子节点 包含 元素节点 文本节点等）<br>6、parentNode.children是一个只读属性，返回所有的子元素节点，它只返回子元素节点，其余节点不返回（这个是我们重点掌握的）虽然children是一个非标准，但是得到了各个游览器的支持，因此我们可以放心使用<br>7、parentNode.firstChild和parentNode.lastChild<br>firstChild返回第一个子节点，找不到则返回null。同样，也是包含所有的节点<br>firstChild第一个子节点，不管是文本节点还是元素节点<br>8、firstElementChild（返回第一个子元素节点，但是有兼容性问题 IE9以上才支持）lastElementChild返回第一个子元素节点<br>9实际开发中，firstChild和lastChild包含其他节点，操作不方便，而firstElementChild和lastElementChild又有兼容性问题，那么我们如何<br>获取第一个子元素节点或者最后一个子元素节点呢？解决方法：实际开发中，既没有兼容性问题，又返回第一个子元素ol.children[0]和ol.children[ol.children.length-1]</p>
-<h1 id="属性操作-——-主要针对自定义属性"><a href="#属性操作-——-主要针对自定义属性" class="headerlink" title="属性操作 —— 主要针对自定义属性"></a>属性操作 —— 主要针对自定义属性</h1><p>1、setAttribute：设置dom的属性值<br>2、getAttribute：得到dom的属性值<br>3、removeAttribute：移除属性<br>4、常规取非自定义属性：element.属性 = 值<br>// h5新增的获取自定义属性的方法 它只能获取data-开头的<br>// dataset是一个集合里面存放了所有以data开头的自定义属性<br>console.log(div.dataset)<br>console.log(div.dataset.index)<br>console.log(div.dataset[‘index’])<br>如果是 data-list-name<br>div.getAttribute(‘data-list-name’)<br>console.log(div.dataset.listName)  驼峰命名法</p>
-<h1 id="事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序"><a href="#事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序" class="headerlink" title="事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序"></a>事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序</h1><p>onclick 鼠标点击左键触发<br>onmouseover 鼠标经过触发<br>onmouseout 鼠标离开触发<br>onfocus 获得鼠标焦点触发<br>onblur 失去鼠标焦点触发<br>onmousemove 鼠标移动触发<br>onmouseup 鼠标弹起触发<br>onmousedown 鼠标按下触发</p>
-]]></content>
-      <categories>
-        <category>前端学习</category>
-      </categories>
-      <tags>
-        <tag>DOM</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IP与域名</title>
     <url>/2022/01/15/IP%E4%B8%8E%E5%9F%9F%E5%90%8D/</url>
     <content><![CDATA[<p>1、一个IP可以对应多个域名</p>
@@ -92,22 +63,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二分（手写不调用库）+前缀+JS</title>
-    <url>/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/</url>
-    <content><![CDATA[<h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><span id="more"></span>
-
-<p>思路：<br>我们只需要找到 sums[k]-sums[j]&gt;=s，那么 k-j 就是满足的连续子数组 因此转换成求 sums[k]-sums[j]&gt;=s 我们可以求 sums[j]+s&lt;=sums[k]，我们只需要求出 sum[j]+s 的值，然后使用二分法查找即可找到这个 k。<br>二分优化（优化在找右端点）：<br>由于本题保证nums[i]为正，所以前缀和数组是递增的，也就是说在确定了区间左端之后，可以二分找右端点：<br>时间复杂度：<br>O(logn)<br>空间复杂度<br>O(n)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"><span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"><span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"><span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> minSubArrayLen = <span class="function"><span class="keyword">function</span>(<span class="params">s, nums</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 二分查找</span></span><br><span class="line"><span class="keyword">var</span> binarySearch = <span class="function"><span class="keyword">function</span>(<span class="params">nums,target</span>)</span>&#123;</span><br><span class="line"><span class="keyword">let</span> left=-<span class="number">1</span>,right = nums.length,middle = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(left+<span class="number">1</span>!=right)&#123;</span><br><span class="line">middle = <span class="built_in">Math</span>.floor((left+right)/<span class="number">2</span>)</span><br><span class="line"><span class="keyword">if</span>(nums[middle]&gt;=target)&#123;</span><br><span class="line">right = middle;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">left = middle</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> right==nums.length?-<span class="number">1</span>:right</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ----------------------------------</span></span><br><span class="line"><span class="keyword">let</span> length=nums.length,min=+<span class="literal">Infinity</span>,sums=[]</span><br><span class="line">sums[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;=length;i++)&#123;</span><br><span class="line">sums[i] = sums[i-<span class="number">1</span>] + nums[i-<span class="number">1</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;s: &quot;</span>+s);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;sums[0]: &quot;</span>+sums[<span class="number">0</span>]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;=length;i++)&#123;</span><br><span class="line"><span class="keyword">let</span> target = s + sums[i]</span><br><span class="line"><span class="built_in">console</span>.log(i+<span class="string">&quot; sums[i]: &quot;</span>+sums[i]);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;target: &quot;</span>+target);</span><br><span class="line"><span class="keyword">let</span> index = binarySearch(sums,target)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;index: &quot;</span>+index)</span><br><span class="line"><span class="keyword">if</span>(index&lt;<span class="number">0</span>)&#123;</span><br><span class="line"><span class="keyword">break</span>. <span class="comment">// 当没找到，意味着加起来的和小于target，意味着当前的index与他之后的元素相加都没有超过target，意味着他之后的元素也都无法超过target,因此直接跳出循环即可.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>( index&lt;=length)&#123;</span><br><span class="line">min = <span class="built_in">Math</span>.min(min,index-i)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;min: &quot;</span>+min)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;----------&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> min == +<span class="literal">Infinity</span>?<span class="number">0</span>:min</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -182,6 +137,73 @@
       </tags>
   </entry>
   <entry>
+    <title>二分（手写不调用库）+前缀+JS</title>
+    <url>/2022/01/27/%E4%BA%8C%E5%88%86%EF%BC%88%E6%89%8B%E5%86%99%E4%B8%8D%E8%B0%83%E7%94%A8%E5%BA%93%EF%BC%89-%E5%89%8D%E7%BC%80-JS/</url>
+    <content><![CDATA[<h4 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a></h4><span id="more"></span>
+
+<p>思路：<br>我们只需要找到 sums[k]-sums[j]&gt;=s，那么 k-j 就是满足的连续子数组 因此转换成求 sums[k]-sums[j]&gt;=s 我们可以求 sums[j]+s&lt;=sums[k]，我们只需要求出 sum[j]+s 的值，然后使用二分法查找即可找到这个 k。<br>二分优化（优化在找右端点）：<br>由于本题保证nums[i]为正，所以前缀和数组是递增的，也就是说在确定了区间左端之后，可以二分找右端点：<br>时间复杂度：<br>O(logn)<br>空间复杂度<br>O(n)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"><span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"><span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"><span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> minSubArrayLen = <span class="function"><span class="keyword">function</span>(<span class="params">s, nums</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 二分查找</span></span><br><span class="line"><span class="keyword">var</span> binarySearch = <span class="function"><span class="keyword">function</span>(<span class="params">nums,target</span>)</span>&#123;</span><br><span class="line"><span class="keyword">let</span> left=-<span class="number">1</span>,right = nums.length,middle = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(left+<span class="number">1</span>!=right)&#123;</span><br><span class="line">middle = <span class="built_in">Math</span>.floor((left+right)/<span class="number">2</span>)</span><br><span class="line"><span class="keyword">if</span>(nums[middle]&gt;=target)&#123;</span><br><span class="line">right = middle;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">left = middle</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> right==nums.length?-<span class="number">1</span>:right</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ----------------------------------</span></span><br><span class="line"><span class="keyword">let</span> length=nums.length,min=+<span class="literal">Infinity</span>,sums=[]</span><br><span class="line">sums[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;=length;i++)&#123;</span><br><span class="line">sums[i] = sums[i-<span class="number">1</span>] + nums[i-<span class="number">1</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;s: &quot;</span>+s);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;sums[0]: &quot;</span>+sums[<span class="number">0</span>]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;=length;i++)&#123;</span><br><span class="line"><span class="keyword">let</span> target = s + sums[i]</span><br><span class="line"><span class="built_in">console</span>.log(i+<span class="string">&quot; sums[i]: &quot;</span>+sums[i]);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;target: &quot;</span>+target);</span><br><span class="line"><span class="keyword">let</span> index = binarySearch(sums,target)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;index: &quot;</span>+index)</span><br><span class="line"><span class="keyword">if</span>(index&lt;<span class="number">0</span>)&#123;</span><br><span class="line"><span class="keyword">break</span>. <span class="comment">// 当没找到，意味着加起来的和小于target，意味着当前的index与他之后的元素相加都没有超过target，意味着他之后的元素也都无法超过target,因此直接跳出循环即可.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>( index&lt;=length)&#123;</span><br><span class="line">min = <span class="built_in">Math</span>.min(min,index-i)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;min: &quot;</span>+min)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;----------&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> min == +<span class="literal">Infinity</span>?<span class="number">0</span>:min</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOM重点核心</title>
+    <url>/2022/01/13/DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83/</url>
+    <content><![CDATA[<p>DOM 文档对象模型 （Document Object Model) 是W3C组织推荐的处理可扩展标记语言 （HTML或者XML）的标准编程接口。<br>通过这些DOM接口，可以改变网页的内容，结构和样式。<br>1、对于JS，为了能够使JS操作HTML，JS就有了一套自己的DOM编程接口。<br>2、对于HTML，dom使得html形成一棵dom树，包括文档，元素，节点。</p>
+<ul>
+<li><p>文档：一个页面就是一个文档，DOM中使用Document表示</p>
+</li>
+<li><p>元素：页面中的所有标签都是元素，DOM中使用element表示</p>
+</li>
+<li><p>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中使用node表示<br>我们获取过来的<strong>DOM元素是一个对象（Object）</strong>，所以称为文档对象模型。<br>关于dom操作，我们主要针对于元素的操作。主要有创建，增，删，改，查、属性操作、事件操作。</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p>1、document.write（直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘，同document.write）<br>2、innerHTML （将内容写入某个DOM节点，不会导致页面全部重绘，创建多个元素效率更高（不要拼接字符串，采取数组形式[document.body.innerHTML = array.join(‘’);]拼接），结构稍微复杂）<br>3、createElement （创建多个元素效率稍低一点点，但是结构更清晰）</p>
+<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>1、appendChild （末尾追加）<br>2、insertBefore （前面追加）</p>
+<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>1、removeChild</p>
+<h1 id="改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等"><a href="#改-——-主要修改dom的元素属性，dom元素的内容，属性，表单的值等" class="headerlink" title="改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等"></a>改 —— 主要修改dom的元素属性，dom元素的内容，属性，表单的值等</h1><p>1、修改元素属性：src，href，title等<br>2、修改普通元素内容：innerHTML（识别html标签，W3C标准，保留空格和换行。推荐），innerText（不识别html标签，非标准，去除空格和换行）<br>3、修改表单元素：value，type，disabled等<br>4、修改元素样式：style（修改比较少的时候使用，行内样式操作，所以优先级高，样式采取驼峰命名法 比如 fontSize,backgroundColor），className（修改比较多的时候使用，类名样式操作，会直接更改元素类名，会覆盖原先的类名，如果想保留原先的类名，我们可以这么做，多类名选择器）<br>查 —— 主要获取查询dom的元素<br>1、DOM提供的API方法：getElementById，getElementsByTagName(大小写敏感,若在当前Document下没有找到，则返回null,古老用法不推荐)<br>2、H5提供的新方法：querySelector(只获取第一个元素，类.,id是#)，querySelectorAll （提倡）<br>3、利用节点操作获取元素：父（parentNode）、子（children）、兄（previousElementSibling、nextElementSibling）提倡<br>4、获取特殊对象：document.body(返回body元素对象) document.documentElement(返回html元素对象)<br>5、parentNode.childNodes (标准 子节点 childNodes所有的子节点 包含 元素节点 文本节点等）<br>6、parentNode.children是一个只读属性，返回所有的子元素节点，它只返回子元素节点，其余节点不返回（这个是我们重点掌握的）虽然children是一个非标准，但是得到了各个游览器的支持，因此我们可以放心使用<br>7、parentNode.firstChild和parentNode.lastChild<br>firstChild返回第一个子节点，找不到则返回null。同样，也是包含所有的节点<br>firstChild第一个子节点，不管是文本节点还是元素节点<br>8、firstElementChild（返回第一个子元素节点，但是有兼容性问题 IE9以上才支持）lastElementChild返回第一个子元素节点<br>9实际开发中，firstChild和lastChild包含其他节点，操作不方便，而firstElementChild和lastElementChild又有兼容性问题，那么我们如何<br>获取第一个子元素节点或者最后一个子元素节点呢？解决方法：实际开发中，既没有兼容性问题，又返回第一个子元素ol.children[0]和ol.children[ol.children.length-1]</p>
+<h1 id="属性操作-——-主要针对自定义属性"><a href="#属性操作-——-主要针对自定义属性" class="headerlink" title="属性操作 —— 主要针对自定义属性"></a>属性操作 —— 主要针对自定义属性</h1><p>1、setAttribute：设置dom的属性值<br>2、getAttribute：得到dom的属性值<br>3、removeAttribute：移除属性<br>4、常规取非自定义属性：element.属性 = 值<br>// h5新增的获取自定义属性的方法 它只能获取data-开头的<br>// dataset是一个集合里面存放了所有以data开头的自定义属性<br>console.log(div.dataset)<br>console.log(div.dataset.index)<br>console.log(div.dataset[‘index’])<br>如果是 data-list-name<br>div.getAttribute(‘data-list-name’)<br>console.log(div.dataset.listName)  驼峰命名法</p>
+<h1 id="事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序"><a href="#事件操作-——-给元素注册事件，采取事件源-事件类型-事件处理程序" class="headerlink" title="事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序"></a>事件操作 —— 给元素注册事件，采取事件源.事件类型 = 事件处理程序</h1><p>onclick 鼠标点击左键触发<br>onmouseover 鼠标经过触发<br>onmouseout 鼠标离开触发<br>onfocus 获得鼠标焦点触发<br>onblur 失去鼠标焦点触发<br>onmousemove 鼠标移动触发<br>onmouseup 鼠标弹起触发<br>onmousedown 鼠标按下触发</p>
+]]></content>
+      <categories>
+        <category>前端学习</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大四-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</title>
+    <url>/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/</url>
+    <content><![CDATA[<p>作品展示：</p>
+<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/5.png" class="" title="This is an image">
+
+<span id="more"></span>
+
+<p>作品描述：</p>
+<p>科技冬奥重点专项的大数据平台</p>
+<p>实时展示车辆的数据信息</p>
+<p>Vue+Echarts+socket.io</p>
+]]></content>
+      <categories>
+        <category>作品集</category>
+      </categories>
+      <tags>
+        <tag>Echarts</tag>
+        <tag>Vue</tag>
+        <tag>Socket.io</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>双指针</title>
     <url>/2022/01/27/%E5%8F%8C%E6%8C%87%E9%92%88/</url>
     <content><![CDATA[<h2 id="什么是双指针（对撞指针、快慢指针）"><a href="#什么是双指针（对撞指针、快慢指针）" class="headerlink" title="什么是双指针（对撞指针、快慢指针）"></a>什么是双指针（对撞指针、快慢指针）</h2><p><strong>双指针</strong>，指的是在遍历对象的过程中，不是普通的使用单个指针进行访问，而是使用两个相同方向（<em>快慢指针</em>）或者相反方向（<em>对撞指针</em>）的指针进行扫描，从而达到相应的目的。</p>
@@ -209,28 +231,6 @@
       </categories>
       <tags>
         <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大四-清华大学实习——清华大学车辆与运载学院汽车安全与节能国家重点实验室新能源汽车测试组</title>
-    <url>/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/</url>
-    <content><![CDATA[<p>作品展示：</p>
-<img src="/2022/01/13/%E5%A4%A7%E5%9B%9B-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%9E%E4%B9%A0%E2%80%94%E2%80%94%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E8%BD%A6%E8%BE%86%E4%B8%8E%E8%BF%90%E8%BD%BD%E5%AD%A6%E9%99%A2%E6%B1%BD%E8%BD%A6%E5%AE%89%E5%85%A8%E4%B8%8E%E8%8A%82%E8%83%BD%E5%9B%BD%E5%AE%B6%E9%87%8D%E7%82%B9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E6%B5%8B%E8%AF%95%E7%BB%84/5.png" class="" title="This is an image">
-
-<span id="more"></span>
-
-<p>作品描述：</p>
-<p>科技冬奥重点专项的大数据平台</p>
-<p>实时展示车辆的数据信息</p>
-<p>Vue+Echarts+socket.io</p>
-]]></content>
-      <categories>
-        <category>作品集</category>
-      </categories>
-      <tags>
-        <tag>Echarts</tag>
-        <tag>Vue</tag>
-        <tag>Socket.io</tag>
       </tags>
   </entry>
   <entry>
@@ -271,14 +271,17 @@
       </tags>
   </entry>
   <entry>
-    <title>时间复杂度</title>
-    <url>/2022/01/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</url>
-    <content><![CDATA[<p>O(1)常数阶 &lt; $O(\log n)$对数阶 &lt; $O(n)$线性阶 &lt; $O(n^2)$平方阶 &lt; $O(n^3)$立方阶 &lt; $O(2^n)$指数阶</p>
-<span id="more"></span>
+    <title>螺旋矩阵</title>
+    <url>/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h4 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a><a href="https://leetcode-cn.com/problems/spiral-matrix/">54. 螺旋矩阵</a></h4><span id="more"></span>
 
-<p><strong>面试中说道算法的时间复杂度是多少指的都是一般情况</strong>。</p>
-<p>？ 在决定使用哪些算法的时候，不是时间复杂越低的越好（因为简化后的时间复杂度忽略了常数项等等），要考虑数据规模，如果数据规模很小甚至可以用$O(n^2)$的算法比$O(n)$的更合适（在有常数项的时候）。 </p>
-<p><strong>所以我们说的时间复杂度都是省略常数项系数的，是因为一般情况下都是默认数据规模足够的大，基于这样的事实，给出的算法时间复杂的的一个排行如下所示</strong></p>
+<p>由于56题K神写法只适用于正方形，因此当题目变为矩形时，需要给后面的两个方向（右到左，下到上)增加判断条件，因为如果是正方形，最后到达中心点的时候，最后一次循环，必然是l=r,t=b,然后后两个方向就不会执行了，因为下一步就是r&lt;l,t&lt;b,但如果是矩形，那么就有可能出现l+1=r或者t+1=b在最后一次循环里，那么这时候就会导致最后两个方向会执行其中一个，导致最后结果多出一个值，这时候只需要加一个判断条件，如果返回的矩阵已经达到要求的数量，那么就不执行后面两个方向，强制不让后面两个方向执行即可。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> spiralOrder = <span class="function"><span class="keyword">function</span>(<span class="params">matrix</span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> n = matrix.length,m = matrix[<span class="number">0</span>].length,l=t=<span class="number">0</span>,r=m-<span class="number">1</span>,b=n-<span class="number">1</span>,mat= <span class="keyword">new</span> <span class="built_in">Array</span>(nm).fill(<span class="number">0</span>),num=<span class="number">0</span>,tar=nm</span><br><span class="line"><span class="keyword">while</span>(num&lt;tar)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;=r;i++) mat[num++] = matrix[t][i]</span><br><span class="line">t++</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=t;i&lt;=b;i++) mat[num++] = matrix[i][r]</span><br><span class="line">r--</span><br><span class="line"><span class="keyword">if</span>(mat[nm-<span class="number">1</span>]===<span class="number">0</span>)<span class="keyword">for</span>(<span class="keyword">let</span> i=r;i&gt;=l;i--) mat[num++] = matrix[b][i]</span><br><span class="line">b--</span><br><span class="line"><span class="keyword">if</span>(mat[n*m-<span class="number">1</span>]===<span class="number">0</span>)<span class="keyword">for</span>(<span class="keyword">let</span> i=b;i&gt;=t;i--) mat[num++] = matrix[i][l]</span><br><span class="line">l++</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> mat</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="59-螺旋矩阵-II"><a href="#59-螺旋矩阵-II" class="headerlink" title="59. 螺旋矩阵 II"></a><a href="https://leetcode-cn.com/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a></h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> l=t=<span class="number">0</span>,r=b=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> matrix = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>).map(<span class="function">()=&gt;</span><span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">let</span> num=<span class="number">1</span>,tar=n*n</span><br><span class="line">    <span class="keyword">while</span>(num&lt;=tar)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;=r;i++) matrix[t][i] = num++</span><br><span class="line">        t++</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=t;i&lt;=b;i++) matrix[i][r] = num++</span><br><span class="line">        r--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=r;i&gt;=l;i--) matrix[b][i] = num++</span><br><span class="line">        b--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=b;i&gt;=t;i--) matrix[i][l] = num++</span><br><span class="line">        l++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> matrix</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -304,6 +307,28 @@
 
 
 
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红蓝二分法</title>
+    <url>/2022/01/27/%E7%BA%A2%E8%93%9D%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<img src="/2022/01/27/%E7%BA%A2%E8%93%9D%E4%BA%8C%E5%88%86%E6%B3%95/1.png" class="" title="This is an image">
+
+<span id="more"></span>
+
+<p>``</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">let</span> countLeft = <span class="function"><span class="keyword">function</span>(<span class="params">nums,target</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> left=-<span class="number">1</span>,right=nums.length,mid=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span>(left+<span class="number">1</span>!=right)&#123;</span><br><span class="line">            mid = <span class="built_in">Math</span>.floor((left+right)/<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&lt;target)&#123;</span><br><span class="line">                left = mid</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> countRight = <span class="function"><span class="keyword">function</span>(<span class="params">nums,target</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> left=-<span class="number">1</span>,right=nums.length,mid=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span>(left+<span class="number">1</span>!=right)&#123;</span><br><span class="line">            mid = <span class="built_in">Math</span>.floor((left+right)/<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&lt;=target)&#123;</span><br><span class="line">                left = mid</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">var</span> searchRange = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ans = [-<span class="number">1</span>,-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">let</span> leftIndex = countLeft(nums,target)</span><br><span class="line">    <span class="keyword">let</span> rightIndex = countRight(nums,target)</span><br><span class="line">    <span class="keyword">if</span>(leftIndex&lt;=rightIndex &amp;&amp; leftIndex&gt;=<span class="number">0</span> &amp;&amp; rightIndex&lt;nums.length &amp;&amp; nums[leftIndex]===target &amp;&amp; nums[rightIndex]===target)&#123;</span><br><span class="line">        <span class="keyword">return</span> [leftIndex,rightIndex]</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>``</p>
+<h2 id="b站视频讲解"><a href="#b站视频讲解" class="headerlink" title="b站视频讲解"></a>b站视频讲解</h2><iframe src="//player.bilibili.com/player.html?aid=841423368&bvid=BV1d54y1q7k7&cid=216724849&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h3 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h3><p><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/lan-hong-hua-fen-fa-dan-mo-ban-miao-sha-e7r40/">https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/lan-hong-hua-fen-fa-dan-mo-ban-miao-sha-e7r40/</a></p>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -339,48 +364,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>红蓝二分法</title>
-    <url>/2022/01/27/%E7%BA%A2%E8%93%9D%E4%BA%8C%E5%88%86%E6%B3%95/</url>
-    <content><![CDATA[<img src="/2022/01/27/%E7%BA%A2%E8%93%9D%E4%BA%8C%E5%88%86%E6%B3%95/1.png" class="" title="This is an image">
-
-<span id="more"></span>
-
-<p>``</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">let</span> countLeft = <span class="function"><span class="keyword">function</span>(<span class="params">nums,target</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> left=-<span class="number">1</span>,right=nums.length,mid=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span>(left+<span class="number">1</span>!=right)&#123;</span><br><span class="line">            mid = <span class="built_in">Math</span>.floor((left+right)/<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&lt;target)&#123;</span><br><span class="line">                left = mid</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> countRight = <span class="function"><span class="keyword">function</span>(<span class="params">nums,target</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> left=-<span class="number">1</span>,right=nums.length,mid=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span>(left+<span class="number">1</span>!=right)&#123;</span><br><span class="line">            mid = <span class="built_in">Math</span>.floor((left+right)/<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&lt;=target)&#123;</span><br><span class="line">                left = mid</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">var</span> searchRange = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ans = [-<span class="number">1</span>,-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">let</span> leftIndex = countLeft(nums,target)</span><br><span class="line">    <span class="keyword">let</span> rightIndex = countRight(nums,target)</span><br><span class="line">    <span class="keyword">if</span>(leftIndex&lt;=rightIndex &amp;&amp; leftIndex&gt;=<span class="number">0</span> &amp;&amp; rightIndex&lt;nums.length &amp;&amp; nums[leftIndex]===target &amp;&amp; nums[rightIndex]===target)&#123;</span><br><span class="line">        <span class="keyword">return</span> [leftIndex,rightIndex]</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>``</p>
-<h2 id="b站视频讲解"><a href="#b站视频讲解" class="headerlink" title="b站视频讲解"></a>b站视频讲解</h2><iframe src="//player.bilibili.com/player.html?aid=841423368&bvid=BV1d54y1q7k7&cid=216724849&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h3 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h3><p><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/lan-hong-hua-fen-fa-dan-mo-ban-miao-sha-e7r40/">https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/lan-hong-hua-fen-fa-dan-mo-ban-miao-sha-e7r40/</a></p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>螺旋矩阵</title>
-    <url>/2022/01/27/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<h4 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a><a href="https://leetcode-cn.com/problems/spiral-matrix/">54. 螺旋矩阵</a></h4><span id="more"></span>
-
-<p>由于56题K神写法只适用于正方形，因此当题目变为矩形时，需要给后面的两个方向（右到左，下到上)增加判断条件，因为如果是正方形，最后到达中心点的时候，最后一次循环，必然是l=r,t=b,然后后两个方向就不会执行了，因为下一步就是r&lt;l,t&lt;b,但如果是矩形，那么就有可能出现l+1=r或者t+1=b在最后一次循环里，那么这时候就会导致最后两个方向会执行其中一个，导致最后结果多出一个值，这时候只需要加一个判断条件，如果返回的矩阵已经达到要求的数量，那么就不执行后面两个方向，强制不让后面两个方向执行即可。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> spiralOrder = <span class="function"><span class="keyword">function</span>(<span class="params">matrix</span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> n = matrix.length,m = matrix[<span class="number">0</span>].length,l=t=<span class="number">0</span>,r=m-<span class="number">1</span>,b=n-<span class="number">1</span>,mat= <span class="keyword">new</span> <span class="built_in">Array</span>(nm).fill(<span class="number">0</span>),num=<span class="number">0</span>,tar=nm</span><br><span class="line"><span class="keyword">while</span>(num&lt;tar)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;=r;i++) mat[num++] = matrix[t][i]</span><br><span class="line">t++</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=t;i&lt;=b;i++) mat[num++] = matrix[i][r]</span><br><span class="line">r--</span><br><span class="line"><span class="keyword">if</span>(mat[nm-<span class="number">1</span>]===<span class="number">0</span>)<span class="keyword">for</span>(<span class="keyword">let</span> i=r;i&gt;=l;i--) mat[num++] = matrix[b][i]</span><br><span class="line">b--</span><br><span class="line"><span class="keyword">if</span>(mat[n*m-<span class="number">1</span>]===<span class="number">0</span>)<span class="keyword">for</span>(<span class="keyword">let</span> i=b;i&gt;=t;i--) mat[num++] = matrix[i][l]</span><br><span class="line">l++</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> mat</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="59-螺旋矩阵-II"><a href="#59-螺旋矩阵-II" class="headerlink" title="59. 螺旋矩阵 II"></a><a href="https://leetcode-cn.com/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a></h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> l=t=<span class="number">0</span>,r=b=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> matrix = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>).map(<span class="function">()=&gt;</span><span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">let</span> num=<span class="number">1</span>,tar=n*n</span><br><span class="line">    <span class="keyword">while</span>(num&lt;=tar)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=l;i&lt;=r;i++) matrix[t][i] = num++</span><br><span class="line">        t++</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=t;i&lt;=b;i++) matrix[i][r] = num++</span><br><span class="line">        r--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=r;i&gt;=l;i--) matrix[b][i] = num++</span><br><span class="line">        b--</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=b;i&gt;=t;i--) matrix[i][l] = num++</span><br><span class="line">        l++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> matrix</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -425,13 +408,14 @@
       </tags>
   </entry>
   <entry>
-    <title>递归求斐波那契数列的性能分析</title>
-    <url>/2022/01/27/%E9%80%92%E5%BD%92%E6%B1%82%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<span id="more"></span>
+    <title>时间复杂度</title>
+    <url>/2022/01/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</url>
+    <content><![CDATA[<p>O(1)常数阶 &lt; $O(\log n)$对数阶 &lt; $O(n)$线性阶 &lt; $O(n^2)$平方阶 &lt; $O(n^3)$立方阶 &lt; $O(2^n)$指数阶</p>
+<span id="more"></span>
 
-<p><a href="https://zhuanlan.zhihu.com/p/27205391">https://zhuanlan.zhihu.com/p/27205391</a></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fibonacci</span><span class="params">(<span class="keyword">int</span> first, <span class="keyword">int</span> second, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fibonacci</span>(second, first + second, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p><strong>面试中说道算法的时间复杂度是多少指的都是一般情况</strong>。</p>
+<p>？ 在决定使用哪些算法的时候，不是时间复杂越低的越好（因为简化后的时间复杂度忽略了常数项等等），要考虑数据规模，如果数据规模很小甚至可以用$O(n^2)$的算法比$O(n)$的更合适（在有常数项的时候）。 </p>
+<p><strong>所以我们说的时间复杂度都是省略常数项系数的，是因为一般情况下都是默认数据规模足够的大，基于这样的事实，给出的算法时间复杂的的一个排行如下所示</strong></p>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -610,6 +594,22 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>递归求斐波那契数列的性能分析</title>
+    <url>/2022/01/27/%E9%80%92%E5%BD%92%E6%B1%82%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p><a href="https://zhuanlan.zhihu.com/p/27205391">https://zhuanlan.zhihu.com/p/27205391</a></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本二</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fibonacci</span><span class="params">(<span class="keyword">int</span> first, <span class="keyword">int</span> second, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fibonacci</span>(second, first + second, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
       </tags>
   </entry>
 </search>
