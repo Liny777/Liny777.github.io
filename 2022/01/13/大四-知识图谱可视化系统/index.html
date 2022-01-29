@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/8.png">
 <meta property="og:image" content="http://example.com/2022/01/13/%E5%A4%A7%E5%9B%9B-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F/10.png">
 <meta property="article:published_time" content="2022-01-13T04:37:46.000Z">
-<meta property="article:modified_time" content="2022-01-15T10:27:45.943Z">
+<meta property="article:modified_time" content="2022-01-27T09:11:42.188Z">
 <meta property="article:author" content="Youguang">
 <meta property="article:tag" content="Echarts">
 <meta property="article:tag" content="Vue">
@@ -232,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-15 18:27:45" itemprop="dateModified" datetime="2022-01-15T18:27:45+08:00">2022-01-15</time>
+                <time title="修改时间：2022-01-27 17:11:42" itemprop="dateModified" datetime="2022-01-27T17:11:42+08:00">2022-01-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -332,6 +332,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -572,10 +573,51 @@ window.addEventListener('pjax:success', () => {
 
 
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'c215c3a16d68cf01d606',
+      clientSecret: 'b7268999504630fe7e573bcca01067255bd95392',
+      repo        : 'BlogComments',
+      owner       : 'Liny777',
+      admin       : ['Liny777'],
+      id          : 'f47af1d1eda4d807b02bba32be15120b',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
     <div id="pjax">
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'c215c3a16d68cf01d606',
+      clientSecret: 'b7268999504630fe7e573bcca01067255bd95392',
+      repo        : 'BlogComments',
+      owner       : 'Liny777',
+      admin       : ['Liny777'],
+      id          : '485b9758053ae2f9380be5482ace9a27',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
