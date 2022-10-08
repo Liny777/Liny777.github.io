@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>部署Hexo教程 - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/logo1.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要介绍 Hexo + icarus 基础环境搭建，包含 Hexo 框架的下载安装，icarus 及其组件的下载安装，完成以下操作步骤将初步完成 Hexo 博客 + icarus 主题的配置。后续将对 Hexo 博客进行功能扩展。"><meta property="og:type" content="blog"><meta property="og:title" content="部署Hexo教程"><meta property="og:url" content="http://example.com/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="本文主要介绍 Hexo + icarus 基础环境搭建，包含 Hexo 框架的下载安装，icarus 及其组件的下载安装，完成以下操作步骤将初步完成 Hexo 博客 + icarus 主题的配置。后续将对 Hexo 博客进行功能扩展。"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/1.png"><meta property="article:published_time" content="2022-10-08T07:37:51.000Z"><meta property="article:modified_time" content="2022-10-08T09:09:35.015Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="Hexo"><meta property="article:tag" content="Icarus"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/"},"headline":"部署Hexo教程","image":["http://example.com/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/1.png"],"datePublished":"2022-10-08T07:37:51.000Z","dateModified":"2022-10-08T09:09:35.015Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"http://example.com/img/logo1.png"}},"description":"本文主要介绍 Hexo + icarus 基础环境搭建，包含 Hexo 框架的下载安装，icarus 及其组件的下载安装，完成以下操作步骤将初步完成 Hexo 博客 + icarus 主题的配置。后续将对 Hexo 博客进行功能扩展。"}</script><link rel="canonical" href="http://example.com/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/"><link rel="icon" href="/img/logo1.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo1.png" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Liny777/Liny777.github.io"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-10-08T07:37:51.000Z" title="2022/10/8 15:37:51">2022-10-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-10-08T09:09:35.015Z" title="2022/10/8 17:09:35">2022-10-08</time></span><span class="level-item"><a class="link-muted" href="/categories/Deploy/">Deploy</a></span><span class="level-item">8 minutes read (About 1183 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">部署Hexo教程</h1><div class="content"><p>本文主要介绍 Hexo + icarus 基础环境搭建，包含 Hexo 框架的下载安装，icarus 及其组件的下载安装，完成以下操作步骤将初步完成 Hexo 博客 + icarus 主题的配置。后续将对 Hexo 博客进行功能扩展。</p>
+<span id="more"></span>
+
+<p>即：</p>
+<ol>
+<li>已安装 <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --version	  <span class="comment"># 查看 git 版本</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>已安装 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a> (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node -v		<span class="comment"># 查看 node.js 版本</span></span><br><span class="line">$ npm -v  		<span class="comment"># 查看 npm 包管理器版本</span></span><br></pre></td></tr></table></figure>
+
+<p>如未正确安装，请参照 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a> 进行安装，以下操作均基于Mac平台。</p>
+<p>我的电脑需要如下操作，至今没去查为何每次使用node都需要source一下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bash_profile <span class="comment"># 编译一下bash文件 ？？？ </span></span><br><span class="line">$ nvm use 16 <span class="comment"># 使用nvm切换node版本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo 框架。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli	<span class="comment"># 全局安装 Hexo 框架</span></span><br></pre></td></tr></table></figure>
+
+<p>查看 Hexo 版本，检查是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hexo-初始化"><a href="#Hexo-初始化" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h2><p>在任意位置新建一个文件夹，取名 <code>blog</code>，在<code>blog/</code> 目录下 打开 <code>CMD</code> 窗口，运行以下命令，进行 Hexo 框架初始化。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init  <span class="comment"># Hexo 初始化</span></span><br></pre></td></tr></table></figure>
+
+<p>我安装时候，vpn有毒，即使复制终端代理命令也不行，老是断一下连一下</p>
+<p>出现问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm not working - <span class="string">&quot;read ECONNRESET&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>后面用如下命令解决：</p>
+<p>use </p>
+<p>so that npm requests for <code>http</code> url instead of <code>https</code>.</p>
+<p>and then try the same <code>npm install</code> command</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm config set registry <span class="attr">http</span>:<span class="comment">//registry.npmjs.org/</span></span><br></pre></td></tr></table></figure>
+
+<p>我原本的源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm config get registry</span><br><span class="line">http://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
+<p>最后换源了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm config <span class="built_in">set</span> registry http://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="下载icarus主题"><a href="#下载icarus主题" class="headerlink" title="下载icarus主题"></a>下载icarus主题</h2><p>运行下列命令以下载 icarus 主题，此处可能下载较慢，请耐心等待。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换icarus主题"><a href="#切换icarus主题" class="headerlink" title="切换icarus主题"></a>切换icarus主题</h2><p>打开 <code>_config.yml</code> 文件，将 <code>thems</code> 项的值更改为 <code>icarus</code></p>
+<h2 id="启动Hexo"><a href="#启动Hexo" class="headerlink" title="启动Hexo"></a>启动Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g	<span class="comment"># 生成静态页面</span></span><br></pre></td></tr></table></figure>
+
+<p>这里会提示错误 ERROR</p>
+<img src="/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/1.png" class="" title="This is an image">
+
+<p>我们根据上图中的错误提示安装 <code>icarus</code> 主题所需组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save bulma-stylus@0.8.0 hexo-renderer-inferno@^0.1.3 hexo-component-inferno@^0.10.1 inferno@^7.3.3 inferno-create-element@^7.3.3</span><br></pre></td></tr></table></figure>
+
+<p>再依次运行命令行，重新生成静态页面，并启动 Hexo 服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g	<span class="comment"># 生成静态页面</span></span><br><span class="line">$ hexo s	<span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器输入下列网址预览效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000b</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加-自定义页面"><a href="#添加-自定义页面" class="headerlink" title="添加 自定义页面"></a>添加 自定义页面</h2><ul>
+<li>新建一个 <strong>分类</strong> 页面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建一个 <strong>标签</strong> 页面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建一个 <strong>关于我</strong> 页面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">&quot;about&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;	</span><br><span class="line"># layout布局默认为post，有三种默认布局即post、page 和 draft，在创建者三种不同类型的文件时，它们将会被保存到不同的路径；</span><br><span class="line"># 而您自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。</span><br></pre></td></tr></table></figure>
+
+<p>新建一篇文章示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new 第一篇文章的名字</span><br></pre></td></tr></table></figure>
+
+<p>在此之前通常建议开启 <code>_config.yml</code> 中的资源文件夹，以便创建文章的同时，自动为你创建同名资源文件夹，这通常用于存放你在本篇文章所用到的图片等资源。存在此文件夹中的图片，Hexo 生成静态页面时，将会将二者存放在同一文件夹下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">true</span>		<span class="comment"># 开启文章资源文件夹</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>在正式开始部署上传到 GitHub 上前，通常建议配置 SSH 秘钥，这样不用每次上传部署都要进行登录验证，有关如何配置 SSH 秘钥，请参阅</p>
+<p>————–此处省略10000字————————-</p>
+<p>————–挖坑1：GitHub 添加 SSH—————</p>
+<p>详情请参阅：<a target="_blank" rel="noopener" href="https://www.weizhang.site/2019/07/01/6_Git%E9%85%8D%E7%BD%AESSH%E7%A7%98%E9%92%A5/#more">Git配置SSH秘钥</a></p>
+<p>————–挖坑2：GitHub 静态页面—————</p>
+<ul>
+<li>首先在<code>_config.yml</code>中修改添加以下内容，指定部署上传的 GitHub 库。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:local-host-8080/local-host-8080.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  </span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt; </span><br><span class="line">  branch: [branch]</span><br><span class="line">  message: [message]Site updated: &#123;&#123; now(&#x27;YYYY-MM-DD HH:mm:ss&#x27;) &#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git</span><br></pre></td></tr></table></figure>
+
+<p>组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>此外，如果您的 Github Pages 需要使用 CNAME 文件<strong>自定义域名</strong>，请将 CNAME 文件置于 <code>source/</code> 目录下，只有这样 <code>hexo deploy</code> 才能将 CNAME 文件一并推送至部署分支。</p>
+<ul>
+<li><p>上传至GitHub</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>暂时就这样…</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>部署Hexo教程</p><p><a href="http://example.com/2022/10/08/部署Hexo/">http://example.com/2022/10/08/部署Hexo/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-10-08</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-10-08</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Hexo/">Hexo</a><a class="link-muted mr-2" rel="tag" href="/tags/Icarus/">Icarus</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/1093742432A" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/10/08/String/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">String</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/10/08/hello-world/"><span class="level-item">Hello World</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "9a8edb24460739f8770963bd166c00e1",
+            repo: "BlogComments",
+            owner: "Liny777",
+            clientID: "c215c3a16d68cf01d606",
+            clientSecret: "056d890e249979b3eaabf0777d9780624b3d66d7",
+            admin: ["Liny777"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/yg.png" alt="Liny"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Liny</p><p class="is-size-6 is-block">Undateable</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Dreams</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Category</p><a href="/categories"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">2</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Liny777"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/YgLiny"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Deploy/"><span class="level-start"><span class="level-item">Deploy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-08T08:00:18.000Z">2022-10-08</time></p><p class="title"><a href="/2022/10/08/String/">String</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-08T07:37:51.000Z">2022-10-08</time></p><p class="title"><a href="/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/">部署Hexo教程</a></p><p class="categories"><a href="/categories/Deploy/">Deploy</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-08T06:51:37.411Z">2022-10-08</time></p><p class="title"><a href="/2022/10/08/hello-world/">Hello World</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/10/"><span class="level-start"><span class="level-item">October 2022</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo1.png" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Liny777"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
