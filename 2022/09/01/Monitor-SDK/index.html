@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Monitor-SDK - Undateable</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Undateable"><meta name="msapplication-TileImage" content="/img/logo1.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Undateable"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本项目主要是实现一个前端监控系统，使用者将本项目开发的埋点代码放置在需要被监控的前端项目中，用户的行为数据会被记录，使用者可以通过一个中台页面监控项目情况。"><meta property="og:type" content="blog"><meta property="og:title" content="Monitor-SDK"><meta property="og:url" content="http://example.com/2022/09/01/Monitor-SDK/"><meta property="og:site_name" content="Undateable"><meta property="og:description" content="本项目主要是实现一个前端监控系统，使用者将本项目开发的埋点代码放置在需要被监控的前端项目中，用户的行为数据会被记录，使用者可以通过一个中台页面监控项目情况。"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/1.jpg"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/1.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/2.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/3.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/4.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/5.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/6.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/7.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/8.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/9.png"><meta property="og:image" content="http://example.com/2022/09/01/Monitor-SDK/10.png"><meta property="article:published_time" content="2022-09-01T12:36:44.000Z"><meta property="article:modified_time" content="2022-10-08T16:20:34.432Z"><meta property="article:author" content="Liny"><meta property="article:tag" content="TypeScript"><meta property="article:tag" content="Vue3"><meta property="article:tag" content="Vite"><meta property="article:tag" content="Flask"><meta property="article:tag" content="uWsgi"><meta property="article:tag" content="Nginx"><meta property="article:tag" content="MongoDB"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/2022/09/01/Monitor-SDK/1.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/09/01/Monitor-SDK/"},"headline":"Monitor-SDK","image":["http://example.com/2022/09/01/Monitor-SDK/1.jpg","http://example.com/2022/09/01/Monitor-SDK/1.png","http://example.com/2022/09/01/Monitor-SDK/2.png","http://example.com/2022/09/01/Monitor-SDK/3.png","http://example.com/2022/09/01/Monitor-SDK/4.png","http://example.com/2022/09/01/Monitor-SDK/5.png","http://example.com/2022/09/01/Monitor-SDK/6.png","http://example.com/2022/09/01/Monitor-SDK/7.png","http://example.com/2022/09/01/Monitor-SDK/8.png","http://example.com/2022/09/01/Monitor-SDK/9.png","http://example.com/2022/09/01/Monitor-SDK/10.png"],"datePublished":"2022-09-01T12:36:44.000Z","dateModified":"2022-10-08T16:20:34.432Z","author":{"@type":"Person","name":"Liny"},"publisher":{"@type":"Organization","name":"Undateable","logo":{"@type":"ImageObject","url":"http://example.com/img/logo2.png"}},"description":"本项目主要是实现一个前端监控系统，使用者将本项目开发的埋点代码放置在需要被监控的前端项目中，用户的行为数据会被记录，使用者可以通过一个中台页面监控项目情况。"}</script><link rel="canonical" href="http://example.com/2022/09/01/Monitor-SDK/"><link rel="icon" href="/img/logo1.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo2.png" alt="Undateable" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Liny777/Liny777.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-09-01T12:36:44.000Z" title="2022-9-1 8:36:44 ├F10: PM┤">2022-09-01</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-10-08T16:20:34.432Z" title="2022-10-9 12:20:34 ├F10: AM┤">2022-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/Personal-works/">Personal works</a><span> / </span><a class="link-muted" href="/categories/BackEnd/">BackEnd</a><span> / </span><a class="link-muted" href="/categories/FrontEnd/">FrontEnd</a></span><span class="level-item">18 minutes read (About 2759 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Monitor-SDK</h1><div class="content"><p>本项目主要是实现一个前端监控系统，使用者将本项目开发的<a target="_blank" rel="noopener" href="https://github.com/youth-camp-root/monitorSDK">埋点代码</a>放置在需要被监控的前端项目中，用户的行为数据会被记录，使用者可以通过一个中台页面监控项目情况。</p>
+<img src="/2022/09/01/Monitor-SDK/1.jpg" class="" title="This is an image">
+
+<span id="more"></span>
+
+<h1 id="一、项目介绍"><a href="#一、项目介绍" class="headerlink" title="一、项目介绍"></a>一、项目介绍</h1><p>Root：一个轻量、快速的全栈前端监控系统。</p>
+<p>Github 地址：</p>
+<h1 id="二、项目分工"><a href="#二、项目分工" class="headerlink" title="二、项目分工"></a>二、项目分工</h1><table>
+<thead>
+<tr>
+<th><strong>团队成员</strong></th>
+<th><strong>主要贡献</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>郑琬仪</td>
+<td>异常概览、总概览和其他页面和接口、页面异常捕获sdk、项目进度与其他事项</td>
+</tr>
+<tr>
+<td>林佑光</td>
+<td>用户细查及总概览页面、相关前后端接口、用户行为捕获sdk</td>
+</tr>
+<tr>
+<td>田雨沛</td>
+<td>用户详情页面、相关前后端接口、Flask后端框架搭建、项目自动化构建部署、辅助组员完成代码</td>
+</tr>
+<tr>
+<td>熊恺杰</td>
+<td>异常详情页面、相关前后端接口、MongoDB数据库搭建、sdk打包、辅助组员完成代码</td>
+</tr>
+<tr>
+<td>熊康伟</td>
+<td>性能页面、相关前后端接口、页面性能sdk</td>
+</tr>
+<tr>
+<td>龚恒</td>
+<td>异常详情页面、相关前后端接口、HTTP请求监控sdk及打包</td>
+</tr>
+</tbody></table>
+<h1 id="三、项目实现"><a href="#三、项目实现" class="headerlink" title="三、项目实现"></a>三、项目实现</h1><h2 id="3-1-技术选型与相关开发文档"><a href="#3-1-技术选型与相关开发文档" class="headerlink" title="3.1 技术选型与相关开发文档"></a>3.1 技术选型与相关开发文档</h2><blockquote>
+<p>可以补充场景分析环节，明确要解决的问题和前提假设，比如按当前选型和架构总体预计需要xxx存储空间，xxx台服务器……。</p>
+</blockquote>
+<p>本项目主要是实现一个前端监控系统，使用者将本项目开发的<a target="_blank" rel="noopener" href="https://github.com/youth-camp-root/monitorSDK">埋点代码</a>放置在需要被监控的前端项目中，用户的行为数据会被记录，使用者可以通过一个中台页面监控项目情况。</p>
+<h3 id="3-1-1-前端"><a href="#3-1-1-前端" class="headerlink" title="3.1.1 前端"></a>3.1.1 前端</h3><p>技术选型：Vue3 + Vite + TypeScript + Arco Design</p>
+<h3 id="3-1-2-后端"><a href="#3-1-2-后端" class="headerlink" title="3.1.2 后端"></a>3.1.2 后端</h3><p>Flask + MongoDB</p>
+<h3 id="3-1-3-监控SDK"><a href="#3-1-3-监控SDK" class="headerlink" title="3.1.3 监控SDK"></a>3.1.3 监控SDK</h3><p>Webpack</p>
+<h3 id="3-1-4-其他"><a href="#3-1-4-其他" class="headerlink" title="3.1.4 其他"></a>3.1.4 其他</h3><ul>
+<li><p>为提升代码的可读性和可维护性，我们在前端监控系统仓库中使用 TS + ESLint 来规范成员的代码风格；为方便统计成员每次提交的内容，使用 commitlint 来规范仓库的提交信息。</p>
+</li>
+<li><p>网站监控系统项目中，使用 flask+mongodb 搭建数据服务器并模拟数据；在监控SDK项目中，通过设置 webpack 的请求中间件来实现虚拟服务器。</p>
+</li>
+</ul>
+<h2 id="3-2-架构设计"><a href="#3-2-架构设计" class="headerlink" title="3.2 架构设计"></a>3.2 架构设计</h2><blockquote>
+<p>可以补充场景分析环节，明确要解决的问题和前提假设，比如预计0.5%的用户属于大V，粉丝很多，也会经常上传视频，当前架构的解决方案是xxx。</p>
+</blockquote>
+<img src="/2022/09/01/Monitor-SDK/1.png" class="" title="This is an image">
+
+<ul>
+<li><p>为了使多人协同的项目进行部署时快捷高效，我们加入了自动化部署脚本</p>
+</li>
+<li><p>为了在有限的时间内快速开发具有良好交互特性和较美观的 UI 的网页，我们选择了字节的Arco Design组件库</p>
+</li>
+<li><p>为了良好的项目和组件结构，我们根据不同需求建立文件夹（概览、异常、用户、性能）内有<code>index.vue</code> 以及组件文件夹以存储组件，前端架构耦合度较低，便于查找和管理</p>
+</li>
+</ul>
+<h3 id="3-2-1-数据库设计"><a href="#3-2-1-数据库设计" class="headerlink" title="3.2.1 数据库设计"></a>3.2.1 数据库设计</h3><img src="/2022/09/01/Monitor-SDK/2.png" class="" title="This is an image">
+
+<h2 id="3-3-项目代码介绍"><a href="#3-3-项目代码介绍" class="headerlink" title="3.3 项目代码介绍"></a>3.3 项目代码介绍</h2><ul>
+<li>前端监控系统：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">web-monitor-dashboard</span><br><span class="line">├─.husky</span><br><span class="line">├─config</span><br><span class="line">└─src</span><br><span class="line">    ├─api // api接口</span><br><span class="line">    ├─assets // 静态资源</span><br><span class="line">    ├─components // 通用组件</span><br><span class="line">    ├─config // 项目配置</span><br><span class="line">    ├─directive // 自定义指令库</span><br><span class="line">    ├─hooks // 前端工具</span><br><span class="line">    ├─layout // 基础布局</span><br><span class="line">    ├─locale // 中英文编码</span><br><span class="line">    ├─mock // 数据mock</span><br><span class="line">    ├─router // 路由文件</span><br><span class="line">    │  ├─appMenus </span><br><span class="line">    │  ├─guard</span><br><span class="line">    │  └─routes</span><br><span class="line">    │      └─modules // 各个页面的router</span><br><span class="line">    ├─store // 数据存储</span><br><span class="line">    ├─types // 数据类型定义</span><br><span class="line">    ├─utils // 数据类工具</span><br><span class="line">    └─views</span><br><span class="line">      ├─error // 错误页面</span><br><span class="line">      │  ├─issue-details // 错误详情页面</span><br><span class="line">      │  └─issues // 错误概览页面</span><br><span class="line">      ├─login // 登入页面</span><br><span class="line">      ├─not-found // not-found 页面</span><br><span class="line">      ├─overview // 概览页面</span><br><span class="line">      │  ├─components</span><br><span class="line">      │  └─locale</span><br><span class="line">      ├─performance // 性能页面</span><br><span class="line">      │  ├─api // api性能及详情页面</span><br><span class="line">      │  └─page // 页面性能及详情页面</span><br><span class="line">      ├─user // 用户详情页面</span><br><span class="line">      ├─useraction // 用户细查页面</span><br><span class="line">      └─userinfo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>后端：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">web-monitor-backend</span><br><span class="line">│  requirements.txt</span><br><span class="line">└─api</span><br><span class="line">   │  __init__.py</span><br><span class="line">   ├─mock</span><br><span class="line">   │  data_generator.py</span><br><span class="line">   │  mock_data_forger.py         </span><br><span class="line">   ├─model // 数据表定义</span><br><span class="line">   │  models.py       </span><br><span class="line">   ├─route</span><br><span class="line">   │  api.py // 其他相关接口</span><br><span class="line">   │  errors.py // 错误相关后端接口</span><br><span class="line">   │  performance.py // 性能相关后端接口</span><br><span class="line">   │  user.py // 用户相关后端接口</span><br><span class="line">   │  mock_api.py</span><br><span class="line">   └─util</span><br><span class="line">      data_process.py</span><br><span class="line">      utils.py</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>监控系统SDK：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">monitorSDK</span><br><span class="line">    └─lib</span><br><span class="line">        blankError.js // 白屏异常</span><br><span class="line">        jsError.js // 脚本异常</span><br><span class="line">        promiseError.js // Promise 脚本异常</span><br><span class="line">        resource.js // 资源加载异常</span><br><span class="line">        stayTime.js // 监控用户行为</span><br><span class="line">        xhr.js // 监控request</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、测试结果"><a href="#四、测试结果" class="headerlink" title="四、测试结果"></a>四、测试结果</h1><blockquote>
+<p>建议从功能测试和性能测试两部分分析，其中功能测试补充测试用例，性能测试补充性能分析报告、可优化点等内容。</p>
+</blockquote>
+<p>功能测试：</p>
+<ol>
+<li><p>用户登录、路由切换</p>
+</li>
+<li><p>概览页面：流量数据、用户量统计、访客量趋势、页面浏览量趋势、用户平均停留时长、异常数据总览加载</p>
+</li>
+<li><p>用户细查页面：用户列表显示、根据用户编号查询功能</p>
+</li>
+<li><p>用户详情页面：用户相关信息显示</p>
+</li>
+<li><p>错误概览页面：异常数据图标显示、异常数据列表及根据异常类型即网页查询功能</p>
+</li>
+<li><p>页面性能页面：FP、FCP、DOM Ready、DNS渲染和页面列表</p>
+</li>
+<li><p>接口性能页面：平均请求概览、总请求量、接口列表</p>
+</li>
+</ol>
+<h2 id="自适应测试"><a href="#自适应测试" class="headerlink" title="自适应测试"></a>自适应测试</h2><img src="/2022/09/01/Monitor-SDK/3.png" class="" title="This is an image"><img src="/2022/09/01/Monitor-SDK/4.png" class="" title="This is an image">
+
+<img src="/2022/09/01/Monitor-SDK/5.png" class="" title="This is an image"><img src="/2022/09/01/Monitor-SDK/6.png" class="" title="This is an image">
+
+<img src="/2022/09/01/Monitor-SDK/7.png" class="" title="This is an image"><img src="/2022/09/01/Monitor-SDK/8.png" class="" title="This is an image">
+
+<img src="/2022/09/01/Monitor-SDK/9.png" class="" title="This is an image"><img src="/2022/09/01/Monitor-SDK/10.png" class="" title="This is an image">
+
+<h1 id="五、Demo-演示视频"><a href="#五、Demo-演示视频" class="headerlink" title="五、Demo 演示视频"></a>五、Demo 演示视频</h1><iframe height=500 width="100%" src='https://www.bilibili.com/video/BV1yt4y1n7tm/?zw' frameborder=0 'allowfullscreen'></iframe>
+
+<h1 id="六、项目总结与反思"><a href="#六、项目总结与反思" class="headerlink" title="六、项目总结与反思"></a>六、项目总结与反思</h1><ol>
+<li><p>目前仍存在的问题</p>
+<ol>
+<li>数据加载速度较慢</li>
+<li>由于对 typescript 使用上的不熟悉，类型声明考虑不周；因人力和时间关系，已完成的通用可配置组件较少</li>
+<li>缺少强制代码评审，再加上不同成员对代码熟练程度和风格不一致，导致页面的代码结构差异较大，代码质量可以改善。</li>
+</ol>
+</li>
+<li><p>已识别出的优化项</p>
+<ol>
+<li>针对服务器性能较弱的问题，应该定时整理日志的统计信息，在请求时直接返回，而不是每次都遍历全部日志进行统计。</li>
+<li>项目的前端页面结构和功能不够完善，其中包括：缺乏切换监控不同项目、图表中可以选择更多不同的时间维度</li>
+<li>数据结构设计存在改进空间，性能页面需要从多个表中获取不同的数据</li>
+</ol>
+</li>
+<li><p>架构演进的可能性</p>
+</li>
+<li><p>项目过程中的反思与总结</p>
+<ol>
+<li>大部分同学对ts、python、github操作不是很熟悉</li>
+<li>直接使用Arco Design Pro的代码为框架，但由于对代码的框架不是很熟悉导致出现问题</li>
+<li>后期没有实时跟踪成员的进度，导致不能在成员出现代码困难第一时间发现</li>
+<li>总结：经过这次项目，对前端监控的认识加深了很多，同时也进一步需要根据不同组员的能力进行良好和清晰的分工的重要性，尽管我们在很早就开始大项目，但是由于并没有很好组织代码提交进度，也面对了很多问题。无论如何，在大家的共同努力下依然完成了这次的大项目，辛苦大家了！</li>
+</ol>
+</li>
+<li><p>没有进行批量上传</p>
+</li>
+<li><p>传输加密</p>
+</li>
+<li><p>sourceMap上传</p>
+</li>
+<li><p>sendBean上传请求</p>
+</li>
+<li><p>页面关闭的pv uv统计问题</p>
+</li>
+</ol>
+<h1 id="七、其他补充资料（选填）"><a href="#七、其他补充资料（选填）" class="headerlink" title="七、其他补充资料（选填）"></a>七、其他补充资料（选填）</h1><h2 id="7-1-用户行为"><a href="#7-1-用户行为" class="headerlink" title="7.1 用户行为"></a>7.1 用户行为</h2><p><strong>PV</strong>：用户浏览量</p>
+<p><strong>UV</strong>：独立访客数</p>
+<p><strong>用户停留时长</strong>：用户在页面的停留时长</p>
+<p><strong>获取方法：</strong></p>
+<p>通过监听事件，获取用户跳转页面的行为，然后将跳转页面，用户停留时间等参数发给后端，这个时候已经获取到页面停留时间，同时可以获取pv，因为我们这里简化一下，浏览量只包括浏览页面的话，那每跳转一个页面就是一个浏览量，pv就+1，然后uv就只要对当天的统计的pv采集到的userid进行去重就可以拿到，或者直接到数据库里进行获取就好。</p>
+<p><strong>监听页面跳转方法</strong>：主要分为两种情况，单页面与多页面应用</p>
+<p><strong>单页面SPA</strong>：分为Hash模式，History模式</p>
+<p>Hash：基于浏览器的hashchange事件，地址变化时，通过window.location.hash 获取地址上的hash值；并通过构造Router类，配置routes对象设置hash值与对应的组件内容。</p>
+<p>History：基于HTML5新增的pushState()和replaceState()两个api，以及浏览器的popstate事件，地址变化时，通过window.location.pathname找到对应的组件。并通过构造Router类，配置routes对象设置pathname值与对应的组件内容</p>
+<p><strong>多页面MPA</strong>：</p>
+<p>主要基于**<code>onpageshow</code><strong>(页面显示的时候)和</strong><code>onpagehide</code><strong>(页面隐藏的时候)这两个API获取用户停留的时长。只要在</strong><code>onpageshow</code><strong>初始时间值，在</strong><code>onpagehide</code>**的时间求出差值，然后上传到后台就行。但是目前没有考虑用户直接关闭浏览器的情况。</p>
+<p><strong>登录获取用户信息：</strong></p>
+<p>在安装SDK时，会先判断**<code>localStorage</code><strong>里是否有用户ID，如果没有，会将请求页面发送给后端，然后后端获取用户的操作系统，设备信息以及IP信息后创建一个新用户并将新用户的ID返回给前端，前端获取到用户ID后将其存放于</strong><code>localStorage</code><strong>中。如果一开始就有用户ID，就直接从</strong><code>localStorage</code>** 中获取<strong>。</strong></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Monitor-SDK</p><p><a href="http://example.com/2022/09/01/Monitor-SDK/">http://example.com/2022/09/01/Monitor-SDK/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Liny</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-09-01</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-10-09</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/TypeScript/">TypeScript</a><a class="link-muted mr-2" rel="tag" href="/tags/Vue3/">Vue3</a><a class="link-muted mr-2" rel="tag" href="/tags/Vite/">Vite</a><a class="link-muted mr-2" rel="tag" href="/tags/Flask/">Flask</a><a class="link-muted mr-2" rel="tag" href="/tags/uWsgi/">uWsgi</a><a class="link-muted mr-2" rel="tag" href="/tags/Nginx/">Nginx</a><a class="link-muted mr-2" rel="tag" href="/tags/MongoDB/">MongoDB</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/1093742432A" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/10/08/hello-world/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Hello World</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/09/08/New-Energy-Car/"><span class="level-item">New-Energy-Car</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "4fa005ea2dd8441a72691c73a834c237",
+            repo: "NewBlogComments",
+            owner: "Liny777",
+            clientID: "c215c3a16d68cf01d606",
+            clientSecret: "056d890e249979b3eaabf0777d9780624b3d66d7",
+            admin: ["Liny777"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/yg.png" alt="Liny"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Liny</p><p class="is-size-6 is-block">Undateable</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Dreams</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">12</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Liny777"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/YgLiny"><i class="fab fa-twitter"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#一、项目介绍"><span class="level-left"><span class="level-item">1</span><span class="level-item">一、项目介绍</span></span></a></li><li><a class="level is-mobile" href="#二、项目分工"><span class="level-left"><span class="level-item">2</span><span class="level-item">二、项目分工</span></span></a></li><li><a class="level is-mobile" href="#三、项目实现"><span class="level-left"><span class="level-item">3</span><span class="level-item">三、项目实现</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-技术选型与相关开发文档"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">3.1 技术选型与相关开发文档</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-1-前端"><span class="level-left"><span class="level-item">3.1.1</span><span class="level-item">3.1.1 前端</span></span></a></li><li><a class="level is-mobile" href="#3-1-2-后端"><span class="level-left"><span class="level-item">3.1.2</span><span class="level-item">3.1.2 后端</span></span></a></li><li><a class="level is-mobile" href="#3-1-3-监控SDK"><span class="level-left"><span class="level-item">3.1.3</span><span class="level-item">3.1.3 监控SDK</span></span></a></li><li><a class="level is-mobile" href="#3-1-4-其他"><span class="level-left"><span class="level-item">3.1.4</span><span class="level-item">3.1.4 其他</span></span></a></li></ul></li><li><a class="level is-mobile" href="#3-2-架构设计"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">3.2 架构设计</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-2-1-数据库设计"><span class="level-left"><span class="level-item">3.2.1</span><span class="level-item">3.2.1 数据库设计</span></span></a></li></ul></li><li><a class="level is-mobile" href="#3-3-项目代码介绍"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">3.3 项目代码介绍</span></span></a></li></ul></li><li><a class="level is-mobile" href="#四、测试结果"><span class="level-left"><span class="level-item">4</span><span class="level-item">四、测试结果</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#自适应测试"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">自适应测试</span></span></a></li></ul></li><li><a class="level is-mobile" href="#五、Demo-演示视频"><span class="level-left"><span class="level-item">5</span><span class="level-item">五、Demo 演示视频</span></span></a></li><li><a class="level is-mobile" href="#六、项目总结与反思"><span class="level-left"><span class="level-item">6</span><span class="level-item">六、项目总结与反思</span></span></a></li><li><a class="level is-mobile" href="#七、其他补充资料（选填）"><span class="level-left"><span class="level-item">7</span><span class="level-item">七、其他补充资料（选填）</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#7-1-用户行为"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">7.1 用户行为</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/BackEnd/"><span class="level-start"><span class="level-item">BackEnd</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Deploy/"><span class="level-start"><span class="level-item">Deploy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/FrontEnd/"><span class="level-start"><span class="level-item">FrontEnd</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Personal-works/"><span class="level-start"><span class="level-item">Personal works</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-08T08:00:18.000Z">2022-10-08</time></p><p class="title"><a href="/2022/10/08/String/">String</a></p><p class="categories"><a href="/categories/BackEnd/">BackEnd</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-08T07:37:51.000Z">2022-10-08</time></p><p class="title"><a href="/2022/10/08/%E9%83%A8%E7%BD%B2Hexo/">部署Hexo教程</a></p><p class="categories"><a href="/categories/Deploy/">Deploy</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-08T06:51:37.411Z">2022-10-08</time></p><p class="title"><a href="/2022/10/08/hello-world/">Hello World</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-09-01T12:36:44.000Z">2022-09-01</time></p><p class="title"><a href="/2022/09/01/Monitor-SDK/">Monitor-SDK</a></p><p class="categories"><a href="/categories/Personal-works/">Personal works</a> / <a href="/categories/BackEnd/">BackEnd</a> / <a href="/categories/FrontEnd/">FrontEnd</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-09-08T12:26:57.000Z">2021-09-08</time></p><p class="title"><a href="/2021/09/08/New-Energy-Car/">New-Energy-Car</a></p><p class="categories"><a href="/categories/Personal-works/">Personal works</a> / <a href="/categories/FrontEnd/">FrontEnd</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/10/"><span class="level-start"><span class="level-item">October 2022</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/09/"><span class="level-start"><span class="level-item">September 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">September 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/09/"><span class="level-start"><span class="level-item">September 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Echarts/"><span class="tag">Echarts</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Flask/"><span class="tag">Flask</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java-Basics/"><span class="tag">Java Basics</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MongoDB/"><span class="tag">MongoDB</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TypeScript/"><span class="tag">TypeScript</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vite/"><span class="tag">Vite</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vue2/"><span class="tag">Vue2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vue3/"><span class="tag">Vue3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/uWsgi/"><span class="tag">uWsgi</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo2.png" alt="Undateable" height="28"></a><p class="is-size-7"><span>&copy; 2022 Liny</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Liny777"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
